@@ -10,11 +10,10 @@ metadata:
   annotations:
     github.com/project-slug: backstage/backstage
     lighthouse.com/website-url: https://backstage.io
-    jira/project-key: <example-jira-project-key>
-    jira/component: <example-component> # optional, you might skip this value to fetch data for all components
+    jira/project-key: backstage
+    jira/component: backstage # optional, you might skip this value to fetch data for all components
     jira/token-type: Bearer # optional, used for Activity stream feed. If you are using Basic auth you can skip this.
-    jira/label: <example-label> # optional, refine filter based on a label or labels (CSV)
-    jira/all-issues-jql: # optional, used by EntityJiraQueryCard, this query supports basic templating with the above annotations if present, and information from the user profile. e.g. "assignee = {{ userEmail }} AND label = ({{ label }})"
+    jira/label: backstage # optional, refine filter based on a label or labels (CSV)
 spec:
   type: library
   owner: CNCF
