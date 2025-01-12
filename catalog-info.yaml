@@ -13,6 +13,7 @@ metadata:
     jira/project-key: backstage
     jira/token-type: Bearer # optional, used for Activity stream feed. If you are using Basic auth you can skip this.
     jira/label: backstage # optional, refine filter based on a label or labels (CSV)
+    jira/all-issues-jql: "assignee = {{ userEmail }} AND label = ({{ label }})"
 spec:
   type: library
   owner: CNCF
