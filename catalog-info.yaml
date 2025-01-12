@@ -11,7 +11,6 @@ metadata:
     github.com/project-slug: backstage/backstage
     lighthouse.com/website-url: https://backstage.io
     jira/project-key: backstage
-    jira/component: backstage # optional, you might skip this value to fetch data for all components
     jira/token-type: Bearer # optional, used for Activity stream feed. If you are using Basic auth you can skip this.
     jira/label: backstage # optional, refine filter based on a label or labels (CSV)
 spec:
