@@ -52,14 +52,14 @@ spec:
     #     repoVisibility: public
     #     defaultBranch: main
 
-    # - id: createrepo
-    #   name: Repository create test 
-    #   action: github:repo:create
-    #   name: Create a new private GitHub repository
-    #   input: 
-    #     repoUrl: ${{ parameters.repoUrl }}
-    #     repoVisibility: private
-    #     description: This is ${{ parameters.name }}
+    - id: createRepo
+      name: Repository create test 
+      action: github:repo:create
+      name: Create a new private GitHub repository
+      input: 
+        repoUrl: ${{ parameters.repoUrl }}
+        repoVisibility: private
+        description: This is ${{ parameters.name }}
 
     # - id: pushrepo
     #   name: repository push test
