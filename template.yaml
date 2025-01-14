@@ -43,21 +43,15 @@ spec:
           name: ${{ parameters.name }}
 
     # This step publishes the contents of the working directory to GitHub.
-    # - id: publish
-    #   name: Publish
-    #   action: publish:github
-    #   input:
-    #     allowedHosts: ['github.com']
-    #     description: This is ${{ parameters.name }}
-    #     repoUrl: ${{ parameters.repoUrl }}
-
     - id: publish
       name: Publish
-      action: github:repo:push
+      action: publish:github
       input:
-        # allowedHosts: ['github.com']
+        allowedHosts: ['github.com']
         description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
+
+
         
     # The final step is to register our new component in the catalog.
     - id: register
