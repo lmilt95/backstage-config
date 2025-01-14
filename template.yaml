@@ -52,8 +52,8 @@ spec:
     #     repoVisibility: public
     #     defaultBranch: main
 
-    - id: create
-      name: repo create
+    - id: createrepo
+      name: Repository create test 
       action: github:repo:create
       name: Create a new private GitHub repository
       input: 
@@ -61,8 +61,8 @@ spec:
         repoVisibility: private
         description: This is ${{ parameters.name }}
 
-    - id: push
-      name: push test
+    - id: pushrepo
+      name: repository push test
       action: github:repo:push
       name: Require codeowner branch protection rule 
       input: 
