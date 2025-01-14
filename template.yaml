@@ -61,12 +61,12 @@ spec:
         repoVisibility: private
         description: This is ${{ parameters.name }}
 
-    - id: pushrepo
-      name: repository push test
-      action: github:repo:push
-      name: Require codeowner branch protection rule 
-      input: 
-        repoUrl: ${{ parameters.repoUrl }}
+    # - id: pushrepo
+    #   name: repository push test
+    #   action: github:repo:push
+    #   name: Require codeowner branch protection rule 
+    #   input: 
+    #     repoUrl: ${{ parameters.repoUrl }}
 
       
 
