@@ -32,7 +32,6 @@ spec:
 
 
   steps:
-    # Each step executes an action, in this case one templates files into the working directory.
     - id: fetchBase
       name: Fetch Base
       action: fetch:template
@@ -40,31 +39,16 @@ spec:
         url: ./content
         values:
           name: ${{ parameters.name }}
-
-    # This step publishes the contents of the working directory to GitHub.
-    # - id: publish
-    #   name: Publish
-    #   action: publish:github
-    #   input:
-    #     allowedHosts: ['github.com']
-    #     description: This is ${{ parameters.name }}
-    #     repoUrl: ${{ parameters.repoUrl }}
-    #     repoVisibility: public
-    #     defaultBranch: main
-
-    - id: createRepo
-      action: github:repo:create
-      name: Create a new private GitHub repository
-      input: 
-        repoUrl: ${{ parameters.repoUrl }}
-        repoVisibility: private
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
         description: This is ${{ parameters.name }}
-
-    - id: pushrepo
-      action: github:repo:push
-      name: Require codeowner branch protection rule 
-      input: 
         repoUrl: ${{ parameters.repoUrl }}
+        repoVisibility: public
+        defaultBranch: main
+
 
       
 
