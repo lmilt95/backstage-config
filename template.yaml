@@ -34,7 +34,7 @@ spec:
   # via the parameters above.
   steps:
     # Each step executes an action, in this case one templates files into the working directory.
-    - id: fetch-base
+    - id: fetchBase
       name: Fetch Base
       action: fetch:template
       input:
