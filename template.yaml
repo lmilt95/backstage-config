@@ -62,7 +62,7 @@ spec:
         description: This is ${{ parameters.name }}
 
     - id: push
-      name: push
+      name: push test
       action: github:repo:push
       name: Require codeowner branch protection rule 
       input: 
