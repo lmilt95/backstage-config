@@ -48,6 +48,14 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         repoVisibility: public
         defaultBranch: main
+    - id: publish
+      name: Publish
+      action: jira:issue:create
+      input:
+        project: BACKSTAGE
+        summary: Main order flow broken
+        issuetype: 10001
+        description: Order entry fails when selecting supplier.
 
 
       
