@@ -48,8 +48,8 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         repoVisibility: public
         defaultBranch: main
-    - id: publish
-      name: Publish
+    - id: jira
+      name: jira pub
       action: jira:issue:create
       input:
         project: BACKSTAGE
