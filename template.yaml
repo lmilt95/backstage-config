@@ -54,7 +54,7 @@ spec:
       input:
         project: BACKSTAGE
         summary: Main order flow broken
-        issuetype: 10001
+        issuetype: '10001'
         description: Order entry fails when selecting supplier.
 
 
