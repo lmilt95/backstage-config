@@ -82,7 +82,7 @@ spec:
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: github.com?repo=backstage-config&owner=lmilt95
+        repoContentsUrl: https://github.com/lmilt95/backstage-config/tree/mtest/test
         catalogInfoPath: '/${{ parameters.name }}-catalog-info.yaml'
 
   # Outputs are displayed to the user after a successful execution of the template.
