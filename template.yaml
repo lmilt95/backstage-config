@@ -16,7 +16,6 @@ spec:
         - summary
         - issuetype
         - project
-        - userInfo 
       properties:
         name:
           title: Name
@@ -39,10 +38,8 @@ spec:
           type: string
           enum:
             - '10001'
-        userInfo:
-          title: User Information
-          type: object
-          required: 
+    - title: User Information
+      required: 
             - firstName
             - lastName
             - uNumber
@@ -52,36 +49,48 @@ spec:
             - departmentLong
             - title
             - isCompanyChanger
-          properties:
-            firstName:
-              title: First Name
-              type: string
-            lastName:
-              title: Last name
-              type: string
-            uNumber:
-              title: U-Number
-              type: string
-            email:
-              title: Email Address
-              type: string
-            costCenter:
-              title: Cost center
-              type: string
-            department:
-              title: Department
-              type: string
-            departmentLong:
-              title: Department (long)
-              type: string
-              description: Department (long)
-            title:
-              title: Title
-              type: string
-            isCompanyChanger:
-              title: Is a company changer?
-              type: boolean
-              ui:widget: radio
+      properties:  
+        type: object
+        required: 
+          - firstName
+          - lastName
+          - uNumber
+          - email
+          - costCenter
+          - department
+          - departmentLong
+          - title
+          - isCompanyChanger
+        properties:
+          firstName:
+            title: First Name
+            type: string
+          lastName:
+            title: Last name
+            type: string
+          uNumber:
+            title: U-Number
+            type: string
+          email:
+            title: Email Address
+            type: string
+          costCenter:
+            title: Cost center
+            type: string
+          department:
+            title: Department
+            type: string
+          departmentLong:
+            title: Department (long)
+            type: string
+            description: Department (long)
+          title:
+            title: Title
+            type: string
+          isCompanyChanger:
+            title: Is a company changer?
+            type: boolean
+            ui:widget: radio
   steps:
     - id: fetchBase
       name: Fetch Base
