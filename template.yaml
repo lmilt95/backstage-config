@@ -123,8 +123,7 @@ spec:
           ui:options:
             rows: 5
         isCompanyChanger:
-          title: Is a company changer
-          description: Is a company changer
+          title: Is a company changer?
           type: boolean
           ui:widget: radio
 
