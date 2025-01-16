@@ -17,7 +17,6 @@ spec:
         - summary
         - issuetype
         - project
-        # - repoUrl
       properties:
         name:
           title: Name
@@ -53,32 +52,23 @@ spec:
           description: Unique issuetype of the component
           enum:
             - '10001'
-        # repoUrl:
-        #   title: Repository Location
-        #   type: string
-        #   ui:field: RepoUrlPicker
-        #   ui:options:
-        #     allowedHosts:
-        #       - github.com
-
-
   steps:
-    # - id: fetchBase
-    #   name: Fetch Base
-    #   action: fetch:template
-    #   input:
-    #     url: ./content
-    #     values:
-    #       name: ${{ parameters.name }}
-    # - id: publish
-    #   name: Publish
-    #   action: publish:github
-    #   input:
-    #     allowedHosts: ['github.com']
-    #     description: This is ${{ parameters.name }}
-    #     repoUrl: ${{ parameters.repoUrl }}
-    #     repoVisibility: public
-    #     defaultBranch: main
+    - id: fetchBase
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.name }}
+    - id: publish
+      name: Publish
+      action: github:repo:push
+      input:
+        description: This is ${{ parameters.name }}
+        repoUrl: github.com?repo=backstage-config&owner=lmilt95
+        repoVisibility: public
+        sourcePath: test
+        defaultBranch: main
     - id: jira
       name: jira pub
       action: jira:issue:create
@@ -93,12 +83,12 @@ spec:
 
         
     # The final step is to register our new component in the catalog.
-    # - id: register
-    #   name: Register
-    #   action: catalog:register
-    #   input:
-    #     repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-    #     catalogInfoPath: '/catalog-info.yaml'
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
 
   # Outputs are displayed to the user after a successful execution of the template.
   # output:
