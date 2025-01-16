@@ -22,21 +22,12 @@ spec:
           title: Name
           type: string
           description: Unique name of the component
-          ui:autofocus: true
-          ui:options:
-            rows: 5
         description:
           title: description
           type: string
-          ui:autofocus: true
-          ui:options:
-            rows: 5
         summary:
           title: summary
           type: string
-          ui:autofocus: true
-          ui:options:
-            rows: 5
         project:
           title: project
           type: string
@@ -63,54 +54,30 @@ spec:
             - isCompanyChanger
           properties:
             firstName:
-              title: firstName
+              title: First Name
               type: string
-              ui:autofocus: true
-              ui:options:
-                rows: 5
             lastName:
               title: Last name
               type: string
-              ui:autofocus: true
-              ui:options:
-                rows: 5
             uNumber:
               title: U-Number
               type: string
-              ui:autofocus: true
-              ui:options:
-                rows: 5
             email:
               title: Email Address
               type: string
-              ui:autofocus: true
-              ui:options:
-                rows: 5
             costCenter:
               title: Cost center
               type: string
-              ui:autofocus: true
-              ui:options:
-                rows: 5
             department:
               title: Department
               type: string
-              ui:autofocus: true
-              ui:options:
-                rows: 5
             departmentLong:
               title: Department (long)
               type: string
               description: Department (long)
-              ui:autofocus: true
-              ui:options:
-                rows: 5
             title:
               title: Title
               type: string
-              ui:autofocus: true
-              ui:options:
-                rows: 5
             isCompanyChanger:
               title: Is a company changer?
               type: boolean
