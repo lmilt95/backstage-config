@@ -75,7 +75,6 @@ spec:
         description: This is ${{ parameters.name }}
         repoUrl: github.com?repo=backstage-config&owner=lmilt95
         repoVisibility: public
-        sourcePath: test
         defaultBranch: main
 
       
