@@ -12,24 +12,12 @@ spec:
   parameters:
     - title: Fill in some steps
       required:
-        # Jira Info
         - name
         - description
         - summary
         - issuetype
         - project
-
-        # User Info
-        - firstName
-        - lastName
-        - uNumber
-        - email
-        - costCenter
-        - department
-        - departmentLong
-        - title
-        - isCompanyChanger
-
+        - userInfo 
       properties:
         name:
           title: Name
@@ -41,91 +29,94 @@ spec:
         description:
           title: description
           type: string
-          description: Unique description of the component
           ui:autofocus: true
           ui:options:
             rows: 5
         summary:
           title: summary
           type: string
-          description: Unique summary of the component
           ui:autofocus: true
           ui:options:
             rows: 5
         project:
           title: project
           type: string
-          description: Unique project of the component
           ui:autofocus: true
           enum:
             - BACKSTAGE
         issuetype:
           title: issuetype
           type: string
-          description: Unique issuetype of the component
           enum:
             - '10001'
-        # user info
-        firstName:
-          title: firstName
-          type: string
-          description: First name
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        lastName:
-          title: Last name
-          type: string
-          description: Last name
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        uNumber:
-          title: U-Number
-          type: string
-          description: U-Number
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        email:
-          title: Email Address
-          type: string
-          description: Email Address
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        costCenter:
-          title: Cost center
-          type: string
-          description: Cost center
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        department:
-          title: Department
-          type: string
-          description: Department
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        departmentLong:
-          title: Department (long)
-          type: string
-          description: Department (long)
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        title:
-          title: Title
-          type: string
-          description: Title
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        isCompanyChanger:
-          title: Is a company changer?
-          type: boolean
-          ui:widget: radio
+        userInfo:
+          title: User Information
+          type: object
+          description: User Information of the component
+          required: 
+            - firstName
+            - lastName
+            - uNumber
+            - email
+            - costCenter
+            - department
+            - departmentLong
+            - title
+            - isCompanyChanger
+          properties:
+            firstName:
+              title: firstName
+              type: string
+              ui:autofocus: true
+              ui:options:
+                rows: 5
+            lastName:
+              title: Last name
+              type: string
+              ui:autofocus: true
+              ui:options:
+                rows: 5
+            uNumber:
+              title: U-Number
+              type: string
+              ui:autofocus: true
+              ui:options:
+                rows: 5
+            email:
+              title: Email Address
+              type: string
+              ui:autofocus: true
+              ui:options:
+                rows: 5
+            costCenter:
+              title: Cost center
+              type: string
+              ui:autofocus: true
+              ui:options:
+                rows: 5
+            department:
+              title: Department
+              type: string
+              ui:autofocus: true
+              ui:options:
+                rows: 5
+            departmentLong:
+              title: Department (long)
+              type: string
+              description: Department (long)
+              ui:autofocus: true
+              ui:options:
+                rows: 5
+            title:
+              title: Title
+              type: string
+              ui:autofocus: true
+              ui:options:
+                rows: 5
+            isCompanyChanger:
+              title: Is a company changer?
+              type: boolean
+              ui:widget: radio
 
   steps:
     - id: fetchBase
