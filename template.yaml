@@ -76,7 +76,7 @@ spec:
         title: This is ${{ parameters.name }}
         repoUrl: github.com?repo=backstage-config&owner=lmilt95
         repoVisibility: public
-        branchName: main
+        branchName: mtest
         targetPath: test
 
       
