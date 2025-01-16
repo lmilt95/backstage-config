@@ -60,6 +60,14 @@ spec:
         url: ./content
         values:
           name: ${{ parameters.name }}
+    - id: jira
+      name: jira pub
+      action: jira:issue:create
+      input:
+        project: ${{ parameters.project }}
+        summary: ${{ parameters.summary }}
+        issuetype: ${{ parameters.issuetype }}
+        description: ${{ parameters.description }}
     - id: publish
       name: Publish
       action: github:repo:push
@@ -69,15 +77,6 @@ spec:
         repoVisibility: public
         sourcePath: test
         defaultBranch: main
-    - id: jira
-      name: jira pub
-      action: jira:issue:create
-      input:
-        project: ${{ parameters.project }}
-        summary: ${{ parameters.summary }}
-        issuetype: ${{ parameters.issuetype }}
-        description: ${{ parameters.description }}
-
 
       
 
