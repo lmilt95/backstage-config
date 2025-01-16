@@ -78,17 +78,12 @@ spec:
         repoVisibility: public
         branchName: mtest
         targetPath: test
-
-      
-
-        
-    # The final step is to register our new component in the catalog.
     - id: register
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-        catalogInfoPath: '/catalog-info.yaml'
+        repoContentsUrl: github.com?repo=backstage-config&owner=lmilt95
+        catalogInfoPath: '/${{ parameters.name }}-catalog-info.yaml'
 
   # Outputs are displayed to the user after a successful execution of the template.
   # output:
