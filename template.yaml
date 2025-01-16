@@ -126,6 +126,7 @@ spec:
           title: Is a company changer
           description: Is a company changer
           type: boolean
+          ui:widget: radio
 
   steps:
     - id: fetchBase
