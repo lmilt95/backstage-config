@@ -13,12 +13,28 @@ spec:
     - title: Fill in some steps
       required:
         - name
+        - description
+        - summary
         # - repoUrl
       properties:
         name:
           title: Name
           type: string
           description: Unique name of the component
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        description:
+          title: description
+          type: string
+          description: Unique description of the component
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        summary:
+          title: summary
+          type: string
+          description: Unique summary of the component
           ui:autofocus: true
           ui:options:
             rows: 5
@@ -53,9 +69,9 @@ spec:
       action: jira:issue:create
       input:
         project: BACKSTAGE
-        summary: Main order flow broken
+        summary: ${{ parameters.summary }}
         issuetype: '10001'
-        description: Order entry fails when selecting supplier.
+        description: ${{ parameters.description }}
 
 
       
