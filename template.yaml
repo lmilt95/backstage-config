@@ -7,8 +7,7 @@ metadata:
   description: t
 spec:
   owner: user:guest
-  type: service
-
+  type: user
   parameters:
     - title: Fill in some steps
       required:
@@ -52,7 +51,6 @@ spec:
         userInfo:
           title: User Information
           type: object
-          description: User Information of the component
           required: 
             - firstName
             - lastName
@@ -117,7 +115,6 @@ spec:
               title: Is a company changer?
               type: boolean
               ui:widget: radio
-
   steps:
     - id: fetchBase
       name: Fetch Base
