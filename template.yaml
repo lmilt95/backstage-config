@@ -16,6 +16,7 @@ spec:
         - summary
         - issuetype
         - project
+        - userObject
       properties:
         name:
           title: Name
@@ -38,14 +39,9 @@ spec:
           type: string
           enum:
             - '10001'
-    - title: User Information
-      required: 
-        - userObject
-      properties:
         userObject:
           title: User Info
           type: object
-          description: Pass an object with key-value pairs.
           required: 
             - firstName
             - lastName
@@ -84,16 +80,10 @@ spec:
               type: string
             isCompanyChanger:
               title: Is a company changer?
-              type: boolean
-              ui:widget: radio
-
-
-
-
-
-
-      
-      
+              type: string
+              enum:
+                - 'Yes'
+                - 'No'
   steps:
     - id: fetchBase
       name: Fetch Base
@@ -110,7 +100,7 @@ spec:
         summary: ${{ parameters.summary }}
         issuetype: ${{ parameters.issuetype }}
         description: ${{ parameters.description }}
-        object:
+        userObject: ${{ parameters.userObject }}
 
   # Outputs are displayed to the user after a successful execution of the template.
   # output:
