@@ -16,7 +16,6 @@ spec:
         - summary
         - issuetype
         - project
-        - userObject
       properties:
         name:
           title: Name
@@ -39,6 +38,10 @@ spec:
           type: string
           enum:
             - '10001'
+    - title: 2
+      required:
+        - userObject
+      properties:
         userObject:
           title: User Info
           type: object
