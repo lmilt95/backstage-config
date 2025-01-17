@@ -39,47 +39,61 @@ spec:
           enum:
             - '10001'
     - title: User Information
-      type: object
       required: 
-        - firstName
-        - lastName
-        - uNumber
-        - email
-        - costCenter
-        - department
-        - departmentLong
-        - title
-        - isCompanyChanger
-      properties:  
-        firstName:
-          title: First Name
-          type: string
-        lastName:
-          title: Last name
-          type: string
-        uNumber:
-          title: U-Number
-          type: string
-        email:
-          title: Email Address
-          type: string
-        costCenter:
-          title: Cost center
-          type: string
-        department:
-          title: Department
-          type: string
-        departmentLong:
-          title: Department (long)
-          type: string
-          description: Department (long)
-        title:
-          title: Title
-          type: string
-        isCompanyChanger:
-          title: Is a company changer?
-          type: boolean
-          ui:widget: radio
+        - userObject
+      properties:
+        userObject:
+          title: User Info
+          type: object
+          description: Pass an object with key-value pairs.
+          required: 
+            - firstName
+            - lastName
+            - uNumber
+            - email
+            - costCenter
+            - department
+            - departmentLong
+            - title
+            - isCompanyChanger
+          properties:  
+            firstName:
+              title: First Name
+              type: string
+            lastName:
+              title: Last name
+              type: string
+            uNumber:
+              title: U-Number
+              type: string
+            email:
+              title: Email Address
+              type: string
+            costCenter:
+              title: Cost center
+              type: string
+            department:
+              title: Department
+              type: string
+            departmentLong:
+              title: Department (long)
+              type: string
+              description: Department (long)
+            title:
+              title: Title
+              type: string
+            isCompanyChanger:
+              title: Is a company changer?
+              type: boolean
+              ui:widget: radio
+
+
+
+
+
+
+      
+      
   steps:
     - id: fetchBase
       name: Fetch Base
@@ -96,6 +110,7 @@ spec:
         summary: ${{ parameters.summary }}
         issuetype: ${{ parameters.issuetype }}
         description: ${{ parameters.description }}
+        object:
 
   # Outputs are displayed to the user after a successful execution of the template.
   # output:
