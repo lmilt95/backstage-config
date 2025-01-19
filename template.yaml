@@ -11,15 +11,15 @@ spec:
     - title: Project Issues Jira
       required:
         - issuetype
-        - project
+        # - project
         - typDesMA
       properties:
-        project:
-          title: project
-          type: string
-          ui:autofocus: true
-          enum:
-            - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
+        # project:
+        #   title: project
+        #   type: string
+        #   ui:autofocus: true
+        #   enum:
+        #     - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
         issuetype:
           title: issuetype
           type: string
@@ -41,11 +41,11 @@ spec:
           type: object
           required: 
             - vorgang
-            - firstName
-            - lastName
-            - costCenter
-            - startOfWork
-            - department
+            # - firstName
+            # - lastName
+            # - costCenter
+            # - startOfWork
+            # - department
           properties: 
             vorgang:
               title: Vorgang
@@ -53,31 +53,31 @@ spec:
                 - 'Aufbau / Anlage / Einrichtung'
                 - 'Auderung'
                 - 'Abbau / Ruckbau / Loschen'
-            firstName:
-              title: Vorname(Firstname)
-              type: string
-            lastName:
-              title: Nachname(Lastname)
-              type: string
-            email:
-              title: Email Address
-              type: string
-            costCenter:
-              title: Kostenstelle(Cost center)
-              type: string
-            startOfWork:
-              title: Arbeitsbeginn(Start of work)
-              type: string
-              format: date
-            department:
-              title: Department(Abteilung)
-              type: string
-              enum:
-                - 'AQ/LS'
-                - 'BER M/BR-A'
+            # firstName:
+            #   title: Vorname(Firstname)
+            #   type: string
+            # lastName:
+            #   title: Nachname(Lastname)
+            #   type: string
+            # email:
+            #   title: Email Address
+            #   type: string
+            # costCenter:
+            #   title: Kostenstelle(Cost center)
+            #   type: string
+            # startOfWork:
+            #   title: Arbeitsbeginn(Start of work)
+            #   type: string
+            #   format: date
+            # department:
+            #   title: Department(Abteilung)
+            #   type: string
+            #   enum:
+            #     - 'AQ/LS'
+            #     - 'BER M/BR-A'
     - title: Additional Information for Option Arbeitnehmeruberlassung
       # if: '{{ parameters.typDesMA === "optionA" || parameters.typDesMA === "optionB" }}' # Conditional logic
-      if: '{{ parameters.typDesMA !== 'Dienstleister' }}' # Conditional logic
+      if: '{{ parameters.typDesMA != "Dienstleister" }}' # Conditional logic
       required:
         - uNumber
       properties:
