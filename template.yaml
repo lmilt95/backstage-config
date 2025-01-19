@@ -80,23 +80,20 @@ spec:
         includeName:
           title: Include Name?
           type: boolean
-          default: true
-
       dependencies:
-        includeName:
+        includeNameK:
           allOf:
             - if:
                 properties:
                   includeName:
                     const: true
               then:
+                required:
+                  - lastName
                 properties:
                   lastName:
                     title: Last Name
                     type: string
-                # You can use additional fields of parameters within conditional parameters such as required.
-                required:
-                  - lastName
       # dependencies:
       #   typDesMA:
       #     allOf:
