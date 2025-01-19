@@ -1,5 +1,4 @@
 apiVersion: scaffolder.backstage.io/v1beta3
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
 kind: Template
 metadata:
   name: jira-issue-create
@@ -9,103 +8,118 @@ spec:
   owner: user:guest
   type: user
   parameters:
-    - title: Fill in some steps
+    - title: Project Issues Jira
       required:
-        - name
-        - description
-        - summary
         - issuetype
         - project
+        - typDesMA
       properties:
-        name:
-          title: Name
-          type: string
-          description: Unique name of the component
-        description:
-          title: description
-          type: string
-        summary:
-          title: summary
-          type: string
         project:
           title: project
           type: string
           ui:autofocus: true
           enum:
-            - BACKSTAGE
+            - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
         issuetype:
           title: issuetype
           type: string
           enum:
-            - '10001'
-    - title: 2
-      required:
-        - userObject
+            - 'Stammdaten'
+        typDesMA:
+              title: Typ des MA 
+              enum:
+                - 'Arbeitnehmeruberlassung'
+                - 'Dienstleister'
+                - 'LH-Group Mitarbeiter'
+                - 'Mitarbeiter'
+                - 'Praktikant'
+                - 'Werkstudent'    
+    - title: Standart User data 
       properties:
         userObject:
           title: User Info
           type: object
           required: 
+            - vorgang
             - firstName
             - lastName
-            - uNumber
-            - email
             - costCenter
+            - startOfWork
             - department
-            - departmentLong
-            - title
-            - isCompanyChanger
-          properties:  
+          properties: 
+            vorgang:
+              title: Vorgang
+              enum:
+                - 'Aufbau / Anlage / Einrichtung'
+                - 'Auderung'
+                - 'Abbau / Ruckbau / Loschen'
             firstName:
-              title: First Name
+              title: Vorname(Firstname)
               type: string
             lastName:
-              title: Last name
-              type: string
-            uNumber:
-              title: U-Number
+              title: Nachname(Lastname)
               type: string
             email:
               title: Email Address
               type: string
             costCenter:
-              title: Cost center
+              title: Kostenstelle(Cost center)
               type: string
+            startOfWork:
+              title: Arbeitsbeginn(Start of work)
+              type: Date
             department:
-              title: Department
-              type: string
-            departmentLong:
-              title: Department (long)
-              type: string
-              description: Department (long)
-            title:
-              title: Title
-              type: string
-            isCompanyChanger:
-              title: Is a company changer?
+              title: Department(Abteilung)
               type: string
               enum:
-                - 'Yes'
-                - 'No'
-  steps:
-    - id: fetchBase
-      name: Fetch Base
-      action: fetch:template
-      input:
-        url: ./content
-        values:
-          name: ${{ parameters.name }}
-    - id: jira
-      name: jira pub
-      action: jira:issue:create
-      input:
-        project: ${{ parameters.project }}
-        summary: ${{ parameters.summary }}
-        issuetype: ${{ parameters.issuetype }}
-        description: ${{ parameters.description }}
-        userObject: ${{ parameters.userObject }}
+                - 'AQ/LS'
+                - 'BER M/BR-A'
+    - title: Additional Information for Option Arbeitnehmeruberlassung
+      # if: '{{ parameters.typDesMA === "optionA" || parameters.typDesMA === "optionB" }}' # Conditional logic
+      if: '{{ parameters.typDesMA != "Dienstleister" }}' # Conditional logic
+      required:
+        - uNumber
+      properties:
+        uNumber:
+            title: U-Number
+            type: string
+        # mmgManager:
+        #   title: MMG-Verantwortlicher
+        #   type: string
+        # title:
+        #   title: Title
+        #   type: string
+        # isCompanyChanger:
+        #   title: Is a company changer?
+        #   type: string
+        #   enum:
+        #     - 'Yes'
+        #     - 'No'
+        # buLhGroup:
+        #   title: BU der LH-Group?
+        #   type: string
+        #   enum:
+        #     - 'Yes'
+        #     - 'No'
+  # steps:
+  #   - id: fetchBase
+  #     name: Fetch Base
+  #     action: fetch:template
+  #     input:
+  #       url: ./content
+  #       values:
+  #         name: ${{ parameters.name }}
+  #   - id: jira
+  #     name: jira pub
+  #     action: jira:issue:create
+  #     input:
+  #       project: ${{ parameters.project }}
+  #       summary: ${{ parameters.summary }}
+  #       issuetype: ${{ parameters.issuetype }}
+  #       description: ${{ parameters.description }}
+  #       userObject: ${{ parameters.userObject }}
 
-  # Outputs are displayed to the user after a successful execution of the template.
+  # # Outputs are displayed to the user after a successful execution of the template.
   # output:
   #   links:
   #     - title: Repository
