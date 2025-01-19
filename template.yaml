@@ -69,12 +69,12 @@ spec:
             #   title: Arbeitsbeginn(Start of work)
             #   type: string
             #   format: date
-            # department:
-              title: Department(Abteilung)
-              type: string
-              enum:
-                - 'AQ/LS'
-                - 'BER M/BR-A'
+    #         department:
+    #           title: Department(Abteilung)
+    #           type: string
+    #           enum:
+    #             - 'AQ/LS'
+    #             - 'BER M/BR-A'
     - title: Additional Information for Option Arbeitnehmeruberlassung
       # if: '{{ parameters.typDesMA === "optionA" || parameters.typDesMA === "optionB" }}' # Conditional logic
       if: '{{ parameters.typDesMA === Mitarbeiter }}' # Conditional logic
