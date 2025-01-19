@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: register-software
   title: Register New Software
-  description: A template to register software with dynamic fields based on user input.
+  description: A template to dynamically show and require fields based on user selection.
 spec:
   owner: team@example.com
   type: user
@@ -23,48 +23,47 @@ spec:
 
     - title: Web Application Fields
       if: '{{ parameters.softwareType === "Web Application" }}'
-      required:
-        - domainName
-        - hostingProvider
       properties:
         domainName:
           type: string
           title: Domain Name
           description: Enter the domain name for the web application.
+          default: '' # Default value ensures it does not get treated as required unless explicitly handled
+
         hostingProvider:
           type: string
           title: Hosting Provider
           description: Specify the hosting provider.
+          default: ''
 
     - title: Library Fields
       if: '{{ parameters.softwareType === "Library" }}'
-      required:
-        - repositoryUrl
       properties:
         repositoryUrl:
           type: string
           title: Repository URL
           description: Provide the GitHub or GitLab repository URL for the library.
+          default: ''
 
     - title: Service Fields
       if: '{{ parameters.softwareType === "Service" }}'
-      required:
-        - apiUrl
-        - serviceOwner
       properties:
         apiUrl:
           type: string
           title: API URL
           description: Specify the URL of the service API.
+          default: ''
+
         serviceOwner:
           type: string
           title: Service Owner
           description: Enter the name of the service owner or team.
+          default: ''
 
   steps:
-    - id: register-software
-      name: Register Software
-      action: scaffolder:debug
+    - id: validate-and-register
+      name: Validate and Register Software
+      action: custom:validate-and-register
       input:
         softwareType: ${{ parameters.softwareType }}
         domainName: ${{ parameters.domainName }}
