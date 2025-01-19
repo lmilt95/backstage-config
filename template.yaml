@@ -76,20 +76,41 @@ spec:
     #             - 'AQ/LS'
     #             - 'BER M/BR-A'
     - title: Additional Information for Option Arbeitnehmeruberlassung
+      properties:
+        includeName:
+          title: Include Name?
+          type: boolean
+          default: true
+
       dependencies:
-        typDesMA:
+        includeName:
           allOf:
             - if:
                 properties:
-                  typDesMA:
-                    const: Dienstleister
+                  includeName:
+                    const: true
               then:
                 properties:
-                  uNumber:
-                      title: U-Number
-                      type: string
+                  lastName:
+                    title: Last Name
+                    type: string
+                # You can use additional fields of parameters within conditional parameters such as required.
                 required:
-                  - uNumber
+                  - lastName
+      # dependencies:
+      #   typDesMA:
+      #     allOf:
+      #       - if:
+      #           properties:
+      #             typDesMA:
+      #               const: Dienstleister
+      #         then:
+      #           properties:
+      #             uNumber:
+      #                 title: U-Number
+      #                 type: string
+      #           required:
+      #             - uNumber
       
         # mmgManager:
         #   title: MMG-Verantwortlicher
