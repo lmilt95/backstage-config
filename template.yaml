@@ -101,14 +101,14 @@ spec:
         #   enum:
         #     - 'Yes'
         #     - 'No'
-  # steps:
-  #   - id: fetchBase
-  #     name: Fetch Base
-  #     action: fetch:template
-  #     input:
-  #       url: ./content
-  #       values:
-  #         name: ${{ parameters.name }}
+  steps:
+    - id: fetchBase
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.name }}
   #   - id: jira
   #     name: jira pub
   #     action: jira:issue:create
