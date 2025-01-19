@@ -1,0 +1,73 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: register-software
+  title: Register New Software
+  description: A template to register software with dynamic fields based on user input.
+spec:
+  owner: team@example.com
+  parameters:
+    - title: Software Type Selection
+      required:
+        - softwareType
+      properties:
+        softwareType:
+          type: string
+          title: Software Type
+          description: Select the type of software to register
+          enum:
+            - Web Application
+            - Library
+            - Service
+
+    - title: Web Application Fields
+      if: '{{ parameters.softwareType === "Web Application" }}'
+      required:
+        - domainName
+        - hostingProvider
+      properties:
+        domainName:
+          type: string
+          title: Domain Name
+          description: Enter the domain name for the web application.
+        hostingProvider:
+          type: string
+          title: Hosting Provider
+          description: Specify the hosting provider.
+
+    - title: Library Fields
+      if: '{{ parameters.softwareType === "Library" }}'
+      required:
+        - repositoryUrl
+      properties:
+        repositoryUrl:
+          type: string
+          title: Repository URL
+          description: Provide the GitHub or GitLab repository URL for the library.
+
+    - title: Service Fields
+      if: '{{ parameters.softwareType === "Service" }}'
+      required:
+        - apiUrl
+        - serviceOwner
+      properties:
+        apiUrl:
+          type: string
+          title: API URL
+          description: Specify the URL of the service API.
+        serviceOwner:
+          type: string
+          title: Service Owner
+          description: Enter the name of the service owner or team.
+
+  steps:
+    - id: register-software
+      name: Register Software
+      action: scaffolder:debug
+      input:
+        softwareType: ${{ parameters.softwareType }}
+        domainName: ${{ parameters.domainName }}
+        hostingProvider: ${{ parameters.hostingProvider }}
+        repositoryUrl: ${{ parameters.repositoryUrl }}
+        apiUrl: ${{ parameters.apiUrl }}
+        serviceOwner: ${{ parameters.serviceOwner }}
