@@ -1,0 +1,115 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+kind: Template
+metadata:
+  name: jira-issue-create
+  title: Create an issue in Jira
+  description: t
+spec:
+  owner: user:guest
+  type: user
+  parameters:
+    - title: Fill in some steps
+      required:
+        - name
+        - description
+        - summary
+        - issuetype
+        - project
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component
+        description:
+          title: description
+          type: string
+        summary:
+          title: summary
+          type: string
+        project:
+          title: project
+          type: string
+          ui:autofocus: true
+          enum:
+            - BACKSTAGE
+        issuetype:
+          title: issuetype
+          type: string
+          enum:
+            - '10001'
+    - title: 2
+      required:
+        - userObject
+      properties:
+        userObject:
+          title: User Info
+          type: object
+          required: 
+            - firstName
+            - lastName
+            - uNumber
+            - email
+            - costCenter
+            - department
+            - departmentLong
+            - title
+            - isCompanyChanger
+          properties:  
+            firstName:
+              title: First Name
+              type: string
+            lastName:
+              title: Last name
+              type: string
+            uNumber:
+              title: U-Number
+              type: string
+            email:
+              title: Email Address
+              type: string
+            costCenter:
+              title: Cost center
+              type: string
+            department:
+              title: Department
+              type: string
+            departmentLong:
+              title: Department (long)
+              type: string
+              description: Department (long)
+            title:
+              title: Title
+              type: string
+            isCompanyChanger:
+              title: Is a company changer?
+              type: string
+              enum:
+                - 'Yes'
+                - 'No'
+  steps:
+    - id: fetchBase
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.name }}
+    - id: jira
+      name: jira pub
+      action: jira:issue:create
+      input:
+        project: ${{ parameters.project }}
+        summary: ${{ parameters.summary }}
+        issuetype: ${{ parameters.issuetype }}
+        description: ${{ parameters.description }}
+        userObject: ${{ parameters.userObject }}
+
+  # Outputs are displayed to the user after a successful execution of the template.
+  # output:
+  #   links:
+  #     - title: Repository
+  #       url: ${{ steps['publish'].output.remoteUrl }}
+  #     - title: Open in catalog
+  #       icon: catalog
+  #       entityRef: ${{ steps['register'].output.entityRef }}
