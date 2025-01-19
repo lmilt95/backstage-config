@@ -21,8 +21,8 @@ spec:
             - Library
             - Service
 
-    - title: Web Application Fields
-      if: ${{ parameters.softwareType === "Web Application" }}
+    - if: ${{ parameters.softwareType === "Web Application" }}
+      title: Web Application Fields
       properties:
         domainName:
           type: string
@@ -36,8 +36,8 @@ spec:
           description: Specify the hosting provider.
           default: ''
 
-    - title: Library Fields
-      if: ${{ parameters.softwareType === "Library" }}
+    - if: ${{ parameters.softwareType === "Library" }}
+      title: Library Fields
       properties:
         repositoryUrl:
           type: string
@@ -45,8 +45,8 @@ spec:
           description: Provide the GitHub or GitLab repository URL for the library.
           default: ''
 
-    - title: Service Fields
-      if: ${{ parameters.softwareType === "Service" }}
+    - if: ${{ parameters.softwareType === "Service" }}
+      title: Service Fields
       properties:
         apiUrl:
           type: string
