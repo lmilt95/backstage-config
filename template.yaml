@@ -77,7 +77,7 @@ spec:
                 - 'BER M/BR-A'
     - title: Additional Information for Option Arbeitnehmeruberlassung
       # if: '{{ parameters.typDesMA === "optionA" || parameters.typDesMA === "optionB" }}' # Conditional logic
-      if: '{{ parameters.typDesMA != "Dienstleister" }}' # Conditional logic
+      if: '{{ parameters.typDesMA !== "Dienstleister" }}' # Conditional logic
       required:
         - uNumber
       properties:
