@@ -10,7 +10,7 @@ spec:
   parameters:
     - title: Project Issues Jira
       required:
-        - issuetype
+        # - issuetype
         # - project
         - typDesMA
       properties:
@@ -20,11 +20,11 @@ spec:
         #   ui:autofocus: true
         #   enum:
         #     - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
-        issuetype:
-          title: issuetype
-          type: string
-          enum:
-            - 'Stammdaten'
+        # issuetype:
+          # title: issuetype
+          # type: string
+          # enum:
+          #   - 'Stammdaten'
         typDesMA:
           title: Typ des MA 
           enum:
@@ -70,14 +70,14 @@ spec:
             #   type: string
             #   format: date
             # department:
-            #   title: Department(Abteilung)
-            #   type: string
-            #   enum:
-            #     - 'AQ/LS'
-            #     - 'BER M/BR-A'
+              title: Department(Abteilung)
+              type: string
+              enum:
+                - 'AQ/LS'
+                - 'BER M/BR-A'
     - title: Additional Information for Option Arbeitnehmeruberlassung
       # if: '{{ parameters.typDesMA === "optionA" || parameters.typDesMA === "optionB" }}' # Conditional logic
-      if: '{{ parameters.typDesMA === "Mitarbeiter" }}' # Conditional logic
+      if: '{{ parameters.typDesMA === Mitarbeiter }}' # Conditional logic
       required:
         - uNumber
       properties:
