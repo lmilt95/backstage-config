@@ -26,14 +26,14 @@ spec:
           enum:
             - 'Stammdaten'
         typDesMA:
-              title: Typ des MA 
-              enum:
-                - 'Arbeitnehmeruberlassung'
-                - 'Dienstleister'
-                - 'LH-Group Mitarbeiter'
-                - 'Mitarbeiter'
-                - 'Praktikant'
-                - 'Werkstudent'    
+          title: Typ des MA 
+          enum:
+            - 'Arbeitnehmeruberlassung'
+            - 'Dienstleister'
+            - 'LH-Group Mitarbeiter'
+            - 'Mitarbeiter'
+            - 'Praktikant'
+            - 'Werkstudent'    
     - title: Standart User data 
       properties:
         userObject:
@@ -67,7 +67,8 @@ spec:
               type: string
             startOfWork:
               title: Arbeitsbeginn(Start of work)
-              type: Date
+              type: string
+              format: date
             department:
               title: Department(Abteilung)
               type: string
