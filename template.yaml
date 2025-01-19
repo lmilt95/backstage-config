@@ -76,14 +76,21 @@ spec:
     #             - 'AQ/LS'
     #             - 'BER M/BR-A'
     - title: Additional Information for Option Arbeitnehmeruberlassung
-      # if: '{{ parameters.typDesMA === "optionA" || parameters.typDesMA === "optionB" }}' # Conditional logic
-      if: ${{ parameters.typDesMA === Mitarbeiter }} # Conditional logic
-      required:
-        - uNumber
-      properties:
-        uNumber:
-            title: U-Number
-            type: string
+      dependencies:
+        typDesMA:
+          allOf:
+            - if:
+                properties:
+                  typDesMA:
+                    const: Dienstleister
+              then:
+                properties:
+                  uNumber:
+                      title: U-Number
+                      type: string
+                required:
+                  - uNumber
+      
         # mmgManager:
         #   title: MMG-Verantwortlicher
         #   type: string
