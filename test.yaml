@@ -22,7 +22,7 @@ spec:
             - Service
 
     - title: Web Application Fields
-      if: '{{ parameters.softwareType === "Web Application" }}'
+      if: ${{ parameters.softwareType === "Web Application" }}
       properties:
         domainName:
           type: string
@@ -37,7 +37,7 @@ spec:
           default: ''
 
     - title: Library Fields
-      if: '{{ parameters.softwareType === "Library" }}'
+      if: ${{ parameters.softwareType === "Library" }}
       properties:
         repositoryUrl:
           type: string
@@ -46,7 +46,7 @@ spec:
           default: ''
 
     - title: Service Fields
-      if: '{{ parameters.softwareType === "Service" }}'
+      if: ${{ parameters.softwareType === "Service" }}
       properties:
         apiUrl:
           type: string
