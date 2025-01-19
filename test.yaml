@@ -6,6 +6,7 @@ metadata:
   description: A template to register software with dynamic fields based on user input.
 spec:
   owner: team@example.com
+  type: user
   parameters:
     - title: Software Type Selection
       required:
