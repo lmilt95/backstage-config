@@ -1,23 +1,32 @@
-parameters:
-  - title: Fill in some steps
-    properties:
-      includeName:
-        title: Include Name?
-        type: boolean
-    dependencies:
-      includeName:
-        allOf:
-          - if:
-              properties:
-                includeName:
-                  const: true
-            then:
-              properties:
-                lastName:
-                  title: Last Name
-                  type: string
-              required:
-                - lastName
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: jira-issue-create
+  title: Create an issue in Jira
+  description: t
+spec:
+  owner: user:guest
+  type: Component  
+  parameters:
+    - title: Fill in some steps
+      properties:
+        includeName:
+          title: Include Name?
+          type: boolean
+      dependencies:
+        includeName:
+          allOf:
+            - if:
+                properties:
+                  includeName:
+                    const: true
+              then:
+                properties:
+                  lastName:
+                    title: Last Name
+                    type: string
+                required:
+                  - lastName
 steps:
   - id: fetch-base
     name: Fetch Base
