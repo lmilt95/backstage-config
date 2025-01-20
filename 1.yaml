@@ -50,7 +50,6 @@ spec:
                   lastName:
                     title: Last Name
                     type: string
-                # You can use additional fields of parameters within conditional parameters such as required.
                 required:
                   - lastName
   steps:
