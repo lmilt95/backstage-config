@@ -26,7 +26,9 @@ spec:
             - if:
                 properties:
                   typDesMA:
-                    const: Dienstleister
+                    anyof:
+                      - const: Dienstleister
+                      - const: Praktikant
               then:
                 properties:
                   lastName:
