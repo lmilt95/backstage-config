@@ -279,3 +279,11 @@ spec:
         url: ./content
         values:
           name: ${{ parameters.name }}
+    - id: jira
+      name: jira pub
+      action: jira:issue:create
+      input:
+        project: ${{ parameters.project }}
+        issuetype: ${{ parameters.issuetype }}
+        typDesMA: ${{ parameters.typDesMA }}
+        userObject: ${{ parameters.userObject }}
