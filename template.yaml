@@ -10,21 +10,21 @@ spec:
   parameters:
     - title: Project Issues Jira
       required:
-        # - issuetype
-        # - project
+        - issuetype
+        - project
         - typDesMA
       properties:
-        # project:
-        #   title: project
-        #   type: string
-        #   ui:autofocus: true
-        #   enum:
-        #     - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
-        # issuetype:
-          # title: issuetype
-          # type: string
-          # enum:
-          #   - 'Stammdaten'
+        project:
+          title: project
+          type: string
+          ui:autofocus: true
+          enum:
+            - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
+        issuetype:
+          title: issuetype
+          type: string
+          enum:
+            - 'Stammdaten'
         typDesMA:
           title: Typ des MA 
           enum:
@@ -75,26 +75,26 @@ spec:
     #           enum:
     #             - 'AQ/LS'
     #             - 'BER M/BR-A'
-    - title: Additional Information for Option selected
-      dependencies:
-        typDesMA:
-          allOf:
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Arbeitnehmeruberlassung
-                      - const: LH-Group Mitarbeiter
-                      - const: Mitarbeiter
-                      - const: Praktikant
-                      - const: Werkstudent
-              then:
-                properties:
-                  uNumber:
-                    title: uNumber
-                    type: string
-                required:
-                  - uNumber
+    # - title: Additional Information for Option selected
+    #   dependencies:
+    #     typDesMA:
+    #       allOf:
+    #         - if:
+    #             properties:
+    #               typDesMA:
+    #                 anyOf:
+    #                   - const: Arbeitnehmeruberlassung
+    #                   - const: LH-Group Mitarbeiter
+    #                   - const: Mitarbeiter
+    #                   - const: Praktikant
+    #                   - const: Werkstudent
+    #           then:
+    #             properties:
+    #               uNumber:
+    #                 title: uNumber
+    #                 type: string
+    #             required:
+    #               - uNumber
             # - if:
             #     properties:
             #       typDesMA:
