@@ -75,26 +75,26 @@ spec:
               enum:
                 - 'AQ/LS'
                 - 'BER M/BR-A'
-          dependencies:
-            typDesMA:
-              allOf:
-    # ----  uNumber
-                - if:
-                    properties:
-                      typDesMA:
-                        anyOf:
-                          - const: Arbeitnehmeruberlassung
-                          - const: LH-Group Mitarbeiter
-                          - const: Mitarbeiter
-                          - const: Praktikant
-                          - const: Werkstudent
-                  then:
-                    properties:
-                      uNumber:
-                        title: uNumber
-                        type: string
-                    required:
-                      - uNumber
+      dependencies:
+        typDesMA:
+          allOf:
+# ----  uNumber
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: LH-Group Mitarbeiter
+                      - const: Mitarbeiter
+                      - const: Praktikant
+                      - const: Werkstudent
+              then:
+                properties:
+                  uNumber:
+                    title: uNumber
+                    type: string
+                required:
+                  - uNumber
     # ----  endDate + vorgesetzter
     #             - if:
     #                 properties:
