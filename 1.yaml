@@ -1,18 +1,20 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: dfgdgf
-  title: dfgdfsg
+  name: jira-issue-create
+  title: Create an issue in Jira
   description: t
 spec:
   owner: user:guest
-  type: Component  
+  type: user
   parameters:
     - title: Fill in some steps
       properties:
         includeName:
           title: Include Name?
           type: boolean
+          default: true
+
       dependencies:
         includeName:
           allOf:
@@ -25,13 +27,14 @@ spec:
                   lastName:
                     title: Last Name
                     type: string
+                # You can use additional fields of parameters within conditional parameters such as required.
                 required:
                   - lastName
-steps:
-  - id: fetch-base
-    name: Fetch Base
-    action: fetch:template
-    input:
-      url: ./content
-      values:
-        name: ${{parameters.includeName}}
+  steps:
+    - id: fetchBase
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.name }}
