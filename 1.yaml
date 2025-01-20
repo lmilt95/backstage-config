@@ -77,7 +77,7 @@ spec:
                 - 'AQ/LS'
                 - 'BER M/BR-A'
     
-    - title: Extra User Info
+    # - title: Extra User Info
       dependencies:
         typDesMA:
           allOf:
