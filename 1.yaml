@@ -98,30 +98,27 @@ spec:
                     type: string
                 required:
                   - uNumber
-
  # ----  endDate + vorgesetzter
-            # - if:
-            #     properties:
-            #       typDesMA:
-            #         anyOf:
-            #           - const: Arbeitnehmeruberlassung
-            #           - const: Mitarbeiter
-            #           - const: Praktikant
-            #           - const: Werkstudent
-            #   then:
-            #     properties:
-            #       endDate:
-            #         title: End date
-            #         type: string
-            #       vorgesetzter:
-            #         title: Vorgesetzter
-            #         type: string
-            #     required:
-            #       - endDate
-            #       - vorgesetzter
-
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: Mitarbeiter
+                      - const: Praktikant
+                      - const: Werkstudent
+              then:
+                properties:
+                  endDate:
+                    title: End date
+                    type: string
+                  vorgesetzter:
+                    title: Vorgesetzter
+                    type: string
+                required:
+                  - endDate
+                  - vorgesetzter
  # ----  mmgVerantwortlicher
-
             - if:
                 properties:
                   typDesMA:
@@ -157,28 +154,27 @@ spec:
               then:
                 required:
                   - externalFirm
-                  # - buLhGroup
-                  # - compAddres
-                  # - telephone
-                  # - emailAdd
+                  - buLhGroup
+                  - compAddres
+                  - telephone
+                  - emailAdd
                 properties:
                   externalFirm:
                     title: Externe Firma
                     type: string
-                  # buLhGroup:
-                  #   title: BU der LH-Group?
-                  #   type: boolean
-                  #   ui:widget: radio
-                  # compAddres:
-                  #   title: Copany Adres/Firmenanschrift
-                  #   type: string
-                  # telephone:
-                  #   title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
-                  #   type: string
-                  # emailAdd:
-                  #   title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
-                  #   type: string
-
+                  buLhGroup:
+                    title: BU der LH-Group?
+                    type: boolean
+                    ui:widget: radio
+                  compAddres:
+                    title: Copany Adres/Firmenanschrift
+                    type: string
+                  telephone:
+                    title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
+                    type: string
+                  emailAdd:
+                    title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
+                    type: string
       # mobile      
             - if:
                 properties:
@@ -194,7 +190,6 @@ spec:
                     title: Mobiltelefon
                     type: boolean
                     ui:widget: radio
-                
                 dependencies:
                   mobile:
                     allOf:
@@ -213,7 +208,6 @@ spec:
                               ui:widget: radio
                           required:
                             - virtualAudioRoom
-    
 # hardware
             - if:
                 properties:
@@ -234,7 +228,6 @@ spec:
                       - 'Neu'
                       - 'Vorhanden'
                       - 'Nicht erforderlich'
-                 
                 dependencies:
                   hardware:
                     allOf:
@@ -255,7 +248,6 @@ spec:
                                 - 'Ipad (Nur Shopmitarbeiter)'
                           required:
                             - hardwaretyp
-              
             - if:
                 properties:
                   typDesMA:
@@ -279,13 +271,6 @@ spec:
                   emailAdd:
                     title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
                     type: string
-
-
-
-
-
-
-
   steps:
     - id: fetchBase
       name: Fetch Base
