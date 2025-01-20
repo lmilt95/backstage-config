@@ -232,8 +232,6 @@ spec:
                       - const: Praktikant
                       - const: Werkstudent
               then:
-                required:
-                  - hardware
                 properties:
                   userObject:
                     type: object
@@ -245,29 +243,31 @@ spec:
                           - 'Neu'
                           - 'Vorhanden'
                           - 'Nicht erforderlich'
-                dependencies:
-                  hardware:
-                    allOf:
-                      - if:
-                          properties:
-                            hardware:
-                              anyOf:
-                                - const: Neu
-                                - const: Vorhanden
-                        then:
-                          properties:
-                            userObject:
-                              type: object
+                    required:
+                      - hardware
+                    dependencies:
+                      hardware:
+                        allOf:
+                          - if:
                               properties:
-                                hardwaretyp:
-                                  title: Hardwaretyp
-                                  type: string
-                                  enum:
-                                    - 'Notebook (DE)'
-                                    - 'Notebook (EN)'
-                                    - 'Ipad (Nur Shopmitarbeiter)'
-                              required:
-                                - hardwaretyp
+                                hardware:
+                                  anyOf:
+                                    - const: Neu
+                                    - const: Vorhanden
+                            then:
+                              properties:
+                                userObject:
+                                  type: object
+                                  properties:
+                                    hardwaretyp:
+                                      title: Hardwaretyp
+                                      type: string
+                                      enum:
+                                        - 'Notebook (DE)'
+                                        - 'Notebook (EN)'
+                                        - 'Ipad (Nur Shopmitarbeiter)'
+                                  required:
+                                    - hardwaretyp
             - if:
                 properties:
                   typDesMA:
