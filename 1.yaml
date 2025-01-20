@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: jira-issue-create
-  title: Create an issue in Jira
+  name: dfgdgf
+  title: dfgdfsg
   description: t
 spec:
   owner: user:guest
@@ -32,6 +32,6 @@ steps:
     name: Fetch Base
     action: fetch:template
     input:
-      url: ./template
+      url: ./content
       values:
-        name: ${{parameters.name}}
+        name: ${{parameters.includeName}}
