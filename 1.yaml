@@ -4,8 +4,6 @@ parameters:
       includeName:
         title: Include Name?
         type: boolean
-        default: true
-
     dependencies:
       includeName:
         allOf:
@@ -18,7 +16,6 @@ parameters:
                 lastName:
                   title: Last Name
                   type: string
-              # You can use additional fields of parameters within conditional parameters such as required.
               required:
                 - lastName
 steps:
