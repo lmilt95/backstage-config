@@ -34,7 +34,7 @@ spec:
                 - 'Auderung'
                 - 'Abbau / Ruckbau / Loschen'
       dependencies:
-        typDesMA:
+        ${{ parameters.typDesMA }}:
           allOf:
             - if:
                 properties:
