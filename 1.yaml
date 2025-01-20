@@ -99,8 +99,8 @@ spec:
                       uNumber:
                         title: uNumber
                         type: string
-                required:
-                  - uNumber
+                    required:
+                      - uNumber
 #  # ----  endDate + vorgesetzter
 #             - if:
 #                 properties:
