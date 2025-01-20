@@ -1,15 +1,30 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: jira-issue-create
-  title: Create an issue in Jira
-  description: t
+  name: jira
+  title: jira
+  description: jira
 spec:
   owner: user:guest
   type: user
   parameters:
-    - title: Fill in some steps
+    - title: Project Issues Jira
+      required:
+        - issuetype
+        - project
+        - typDesMA
       properties:
+        project:
+          title: project
+          type: string
+          ui:autofocus: true
+          enum:
+            - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
+        issuetype:
+          title: issuetype
+          type: string
+          enum:
+            - 'Stammdaten'
         typDesMA:
           title: Typ des MA 
           enum:
