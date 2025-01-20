@@ -116,6 +116,32 @@ spec:
                 required:
                   - endDate
                   - vorgesetzter
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Dienstleister
+                      - const: LH-Group Mitarbeiter
+              then:
+                required:
+                  - mmgVerantwortlicher
+                properties:
+                  mmgVerantwortlicher:
+                    title: MMG-Verantwortlicher
+                    type: string
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Mitarbeiter
+                      - const: LH-Group Mitarbeiter
+              then:
+                required:
+                  - titel
+                properties:
+                  titel:
+                    title: Titel
+                    type: string
   steps:
     - id: fetchBase
       name: Fetch Base
