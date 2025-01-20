@@ -1,0 +1,31 @@
+parameters:
+  - title: Fill in some steps
+    properties:
+      includeName:
+        title: Include Name?
+        type: boolean
+        default: true
+
+    dependencies:
+      includeName:
+        allOf:
+          - if:
+              properties:
+                includeName:
+                  const: true
+            then:
+              properties:
+                lastName:
+                  title: Last Name
+                  type: string
+              # You can use additional fields of parameters within conditional parameters such as required.
+              required:
+                - lastName
+steps:
+  - id: fetch-base
+    name: Fetch Base
+    action: fetch:template
+    input:
+      url: ./template
+      values:
+        name: ${{parameters.name}}
