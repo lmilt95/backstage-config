@@ -85,15 +85,18 @@ spec:
                 properties:
                   typDesMA:
                     anyOf:
-                      - const: Dienstleister
+                      - const: Arbeitnehmeruberlassung
+                      - const: LH-Group Mitarbeiter
+                      - const: Mitarbeiter
                       - const: Praktikant
+                      - const: Werkstudent
               then:
                 properties:
-                  lastName:
-                    title: Last Name
+                  uNumber:
+                    title: uNumber
                     type: string
                 required:
-                  - lastName
+                  - uNumber
   steps:
     - id: fetchBase
       name: Fetch Base
