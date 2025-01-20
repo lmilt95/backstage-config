@@ -34,7 +34,6 @@ spec:
             - 'Mitarbeiter'
             - 'Praktikant'
             - 'Werkstudent'
-
     - title: Standart User data
       properties:
         userObject:
@@ -76,7 +75,6 @@ spec:
               enum:
                 - 'AQ/LS'
                 - 'BER M/BR-A'
-    
     - title: Extra User Info
       dependencies:
         typDesMA:
@@ -102,82 +100,94 @@ spec:
                     required:
                       - uNumber
 #  # ----  endDate + vorgesetzter
-#             - if:
-#                 properties:
-#                   typDesMA:
-#                     anyOf:
-#                       - const: Arbeitnehmeruberlassung
-#                       - const: Mitarbeiter
-#                       - const: Praktikant
-#                       - const: Werkstudent
-#               then:
-#                 properties:
-#                   endDate:
-#                     title: End date
-#                     type: string
-#                   vorgesetzter:
-#                     title: Vorgesetzter
-#                     type: string
-#                 required:
-#                   - endDate
-#                   - vorgesetzter
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: Mitarbeiter
+                      - const: Praktikant
+                      - const: Werkstudent
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      endDate:
+                        title: End date
+                        type: string
+                      vorgesetzter:
+                        title: Vorgesetzter
+                        type: string
+                    required:
+                      - endDate
+                      - vorgesetzter
 #  # ----  mmgVerantwortlicher
-#             - if:
-#                 properties:
-#                   typDesMA:
-#                     anyOf:
-#                       - const: Dienstleister
-#                       - const: LH-Group Mitarbeiter
-#               then:
-#                 required:
-#                   - mmgVerantwortlicher
-#                 properties:
-#                   mmgVerantwortlicher:
-#                     title: MMG-Verantwortlicher
-#                     type: string
-#             - if:
-#                 properties:
-#                   typDesMA:
-#                     anyOf:
-#                       - const: Mitarbeiter
-#                       - const: LH-Group Mitarbeiter
-#               then:
-#                 required:
-#                   - titel
-#                 properties:
-#                   titel:
-#                     title: Titel
-#                     type: string
-#             - if:
-#                 properties:
-#                   typDesMA:
-#                     anyOf:
-#                       - const: Arbeitnehmeruberlassung
-#                       - const: Dienstleister
-#               then:
-#                 required:
-#                   - externalFirm
-#                   - buLhGroup
-#                   - compAddres
-#                   - telephone
-#                   - emailAdd
-#                 properties:
-#                   externalFirm:
-#                     title: Externe Firma
-#                     type: string
-#                   buLhGroup:
-#                     title: BU der LH-Group?
-#                     type: boolean
-#                     ui:widget: radio
-#                   compAddres:
-#                     title: Copany Adres/Firmenanschrift
-#                     type: string
-#                   telephone:
-#                     title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
-#                     type: string
-#                   emailAdd:
-#                     title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
-#                     type: string
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Dienstleister
+                      - const: LH-Group Mitarbeiter
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      mmgVerantwortlicher:
+                        title: MMG-Verantwortlicher
+                        type: string
+                    required:
+                      - mmgVerantwortlicher
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Mitarbeiter
+                      - const: LH-Group Mitarbeiter
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      titel:
+                        title: Titel
+                        type: string
+                    required:
+                    - titel
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: Dienstleister
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      externalFirm:
+                        title: Externe Firma
+                        type: string
+                      buLhGroup:
+                        title: BU der LH-Group?
+                        type: boolean
+                        ui:widget: radio
+                      compAddres:
+                        title: Copany Adres/Firmenanschrift
+                        type: string
+                      telephone:
+                        title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
+                        type: string
+                      emailAdd:
+                        title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
+                        type: string
+                    required:
+                      - externalFirm
+                      - buLhGroup
+                      - compAddres
+                      - telephone
+                      - emailAdd
 #       # mobile      
 #             - if:
 #                 properties:
