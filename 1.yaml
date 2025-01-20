@@ -10,18 +10,23 @@ spec:
   parameters:
     - title: Fill in some steps
       properties:
-        includeName:
-          title: Include Name?
-          type: boolean
-          default: true
+        typDesMA:
+          title: Typ des MA 
+          enum:
+            - 'Arbeitnehmeruberlassung'
+            - 'Dienstleister'
+            - 'LH-Group Mitarbeiter'
+            - 'Mitarbeiter'
+            - 'Praktikant'
+            - 'Werkstudent'
 
       dependencies:
-        includeName:
+        typDesMA:
           allOf:
             - if:
                 properties:
-                  includeName:
-                    const: true
+                  typDesMA:
+                    const: Dienstleister
               then:
                 properties:
                   lastName:
