@@ -41,35 +41,35 @@ spec:
           title: User Info
           type: object
           required: 
-            # - vorgang
-            # - firstName
-            # - lastName
-            # - costCenter
-            # - startOfWork
+            - vorgang
+            - firstName
+            - lastName
+            - costCenter
+            - startOfWork
             - department
           properties: 
-            # vorgang:
-            #   title: Vorgang
-            #   enum:
-            #     - 'Aufbau / Anlage / Einrichtung'
-            #     - 'Auderung'
-            #     - 'Abbau / Ruckbau / Loschen'
-            # firstName:
-            #   title: Vorname(Firstname)
-            #   type: string
-            # lastName:
-            #   title: Nachname(Lastname)
-            #   type: string
-            # email:
-            #   title: Email Address
-            #   type: string
-            # costCenter:
-            #   title: Kostenstelle(Cost center)
-            #   type: string
-            # startOfWork:
-            #   title: Arbeitsbeginn(Start of work)
-            #   type: string
-            #   format: date
+            vorgang:
+              title: Vorgang
+              enum:
+                - 'Aufbau / Anlage / Einrichtung'
+                - 'Auderung'
+                - 'Abbau / Ruckbau / Loschen'
+            firstName:
+              title: Vorname(Firstname)
+              type: string
+            lastName:
+              title: Nachname(Lastname)
+              type: string
+            email:
+              title: Email Address
+              type: string
+            costCenter:
+              title: Kostenstelle(Cost center)
+              type: string
+            startOfWork:
+              title: Arbeitsbeginn(Start of work)
+              type: string
+              format: date
             department:
               title: Department(Abteilung)
               type: string
