@@ -81,41 +81,47 @@ spec:
       dependencies:
         typDesMA:
           allOf:
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Arbeitnehmeruberlassung
-                      - const: LH-Group Mitarbeiter
-                      - const: Mitarbeiter
-                      - const: Praktikant
-                      - const: Werkstudent
-              then:
-                properties:
-                  uNumber:
-                    title: uNumber
-                    type: string
-                required:
-                  - uNumber
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Arbeitnehmeruberlassung
-                      - const: Mitarbeiter
-                      - const: Praktikant
-                      - const: Werkstudent
-              then:
-                properties:
-                  endDate:
-                    title: End date
-                    type: string
-                  vorgesetzter:
-                    title: Vorgesetzter
-                    type: string
-                required:
-                  - endDate
-                  - vorgesetzter
+ # ----  uNumber
+            # - if:
+            #     properties:
+            #       typDesMA:
+            #         anyOf:
+            #           - const: Arbeitnehmeruberlassung
+            #           - const: LH-Group Mitarbeiter
+            #           - const: Mitarbeiter
+            #           - const: Praktikant
+            #           - const: Werkstudent
+            #   then:
+            #     properties:
+            #       uNumber:
+            #         title: uNumber
+            #         type: string
+            #     required:
+            #       - uNumber
+
+ # ----  endDate + vorgesetzter
+            # - if:
+            #     properties:
+            #       typDesMA:
+            #         anyOf:
+            #           - const: Arbeitnehmeruberlassung
+            #           - const: Mitarbeiter
+            #           - const: Praktikant
+            #           - const: Werkstudent
+            #   then:
+            #     properties:
+            #       endDate:
+            #         title: End date
+            #         type: string
+            #       vorgesetzter:
+            #         title: Vorgesetzter
+            #         type: string
+            #     required:
+            #       - endDate
+            #       - vorgesetzter
+
+ # ----  mmgVerantwortlicher
+
             - if:
                 properties:
                   typDesMA:
