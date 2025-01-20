@@ -202,27 +202,27 @@ spec:
                         ui:widget: radio
                     required:
                       - mobile
-                dependencies:
-                  mobile:
-                    allOf:
-                      - if:
-                          properties:
-                            mobile:
-                              const: true
-                        then:
-                          properties:
-                            userObject:
-                              type: object
+                    dependencies:
+                      mobile:
+                        allOf:
+                          - if:
                               properties:
-                                telefonnummer:
-                                  title: Telefonnummer
-                                  type: string
-                                virtualAudioRoom:
-                                  title: Virtueller Audioraum
-                                  type: boolean
-                                  ui:widget: radio
-                              required:
-                                - virtualAudioRoom
+                                mobile:
+                                  const: true
+                            then:
+                              properties:
+                                userObject:
+                                  type: object
+                                  properties:
+                                    telefonnummer:
+                                      title: Telefonnummer
+                                      type: string
+                                    virtualAudioRoom:
+                                      title: Virtueller Audioraum
+                                      type: boolean
+                                      ui:widget: radio
+                                  required:
+                                    - virtualAudioRoom
 # # hardware
 #             - if:
 #                 properties:
