@@ -223,68 +223,77 @@ spec:
                                       ui:widget: radio
                                   required:
                                     - virtualAudioRoom
-#             - if:
-#                 properties:
-#                   typDesMA:
-#                     anyOf:
-#                       - const: Arbeitnehmeruberlassung
-#                       - const: Mitarbeiter
-#                       - const: Praktikant
-#                       - const: Werkstudent
-#               then:
-#                 required:
-#                   - hardware
-#                 properties:
-#                   hardware:
-#                     title: hardware
-#                     type: string
-#                     enum:
-#                       - 'Neu'
-#                       - 'Vorhanden'
-#                       - 'Nicht erforderlich'
-#                 dependencies:
-#                   hardware:
-#                     allOf:
-#                       - if:
-#                           properties:
-#                             hardware:
-#                               anyOf:
-#                                 - const: Neu
-#                                 - const: Vorhanden
-#                         then:
-#                           properties:
-#                             hardwaretyp:
-#                               title: Hardwaretyp
-#                               type: string
-#                               enum:
-#                                 - 'Notebook (DE)'
-#                                 - 'Notebook (EN)'
-#                                 - 'Ipad (Nur Shopmitarbeiter)'
-#                           required:
-#                             - hardwaretyp
-#             - if:
-#                 properties:
-#                   typDesMA:
-#                     anyOf:
-#                       - const: LH-Group Mitarbeiter
-#               then:
-#                 required:
-#                   - buLhGroup
-#                   - emailAdd
-#                 properties:
-#                   externalFirm:
-#                     title: Externe Firma
-#                     type: string
-#                   buLhGroup:
-#                     title: BU der LH-Group?
-#                     type: boolean
-#                     ui:widget: radio
-#                   telephone:
-#                     title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
-#                     type: string
-#                   emailAdd:
-#                     title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
-#                     type: string
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: Mitarbeiter
+                      - const: Praktikant
+                      - const: Werkstudent
+              then:
+                required:
+                  - hardware
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      hardware:
+                        title: hardware
+                        type: string
+                        enum:
+                          - 'Neu'
+                          - 'Vorhanden'
+                          - 'Nicht erforderlich'
+                dependencies:
+                  hardware:
+                    allOf:
+                      - if:
+                          properties:
+                            hardware:
+                              anyOf:
+                                - const: Neu
+                                - const: Vorhanden
+                        then:
+                          properties:
+                            userObject:
+                              type: object
+                              properties:
+                                hardwaretyp:
+                                  title: Hardwaretyp
+                                  type: string
+                                  enum:
+                                    - 'Notebook (DE)'
+                                    - 'Notebook (EN)'
+                                    - 'Ipad (Nur Shopmitarbeiter)'
+                              required:
+                                - hardwaretyp
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: LH-Group Mitarbeiter
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      externalFirm:
+                        title: Externe Firma
+                        type: string
+                      buLhGroup:
+                        title: BU der LH-Group?
+                        type: boolean
+                        ui:widget: radio
+                      telephone:
+                        title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
+                        type: string
+                      emailAdd:
+                        title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
+                        type: string
+                    required:
+                      - buLhGroup
+                      - emailAdd
   steps:
     - id: fetchBase
       name: Fetch Base
