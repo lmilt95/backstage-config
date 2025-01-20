@@ -191,24 +191,24 @@ spec:
                       - 'Vorhanden'
                       - 'Nicht erforderlich'
             
-      dependencies:
-        mobile:
-          allOf:
-            - if:
-                properties:
+                dependencies:
                   mobile:
-                    const: true
-              then:
-                properties:
-                  telefonnummer:
-                    title: Telefonnummer
-                    type: string
-                  virtualAudioRoom:
-                    title: Virtueller Audioraum
-                    type: boolean
-                    ui:widget: radio
-                required:
-                  - virtualAudioRoom
+                    allOf:
+                      - if:
+                          properties:
+                            mobile:
+                              const: true
+                        then:
+                          properties:
+                            telefonnummer:
+                              title: Telefonnummer
+                              type: string
+                            virtualAudioRoom:
+                              title: Virtueller Audioraum
+                              type: boolean
+                              ui:widget: radio
+                          required:
+                            - virtualAudioRoom
 
 
 
