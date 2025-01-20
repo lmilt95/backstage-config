@@ -156,7 +156,7 @@ spec:
               then:
                 required:
                   # - externalFirm
-                  - buLhGroup
+                  # - buLhGroup
                   # - compAddres
                   # - telephone
                   # - emailAdd
@@ -166,10 +166,10 @@ spec:
                   # externalFirm:
                   #   title: Externe Firma
                   #   type: string
-                  buLhGroup:
-                    title: BU der LH-Group?
-                    type: boolean
-                    ui:widget: radio
+                  # buLhGroup:
+                  #   title: BU der LH-Group?
+                  #   type: boolean
+                  #   ui:widget: radio
                   # compAddres:
                   #   title: Copany Adres/Firmenanschrift
                   #   type: string
