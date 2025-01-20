@@ -153,6 +153,7 @@ spec:
                   typDesMA:
                     anyOf:
                       - const: Arbeitnehmeruberlassung
+                      - const: Dienstleister
               then:
                 required:
                   # - externalFirm
@@ -160,8 +161,6 @@ spec:
                   # - compAddres
                   # - telephone
                   # - emailAdd
-                  - mobile
-                  - hardware
                 properties:
                   # externalFirm:
                   #   title: Externe Firma
@@ -179,6 +178,16 @@ spec:
                   # emailAdd:
                   #   title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
                   #   type: string
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+              then:
+                required:
+                  - mobile
+                  - hardware
+                properties:
                   mobile:
                     title: Mobiltelefon
                     type: boolean
@@ -190,6 +199,44 @@ spec:
                       - 'Neu'
                       - 'Vorhanden'
                       - 'Nicht erforderlich'
+            
+                dependencies:
+                  mobile:
+                    allOf:
+                      - if:
+                          properties:
+                            mobile:
+                              const: true
+                        then:
+                          properties:
+                            telefonnummer:
+                              title: Telefonnummer
+                              type: string
+                            virtualAudioRoom:
+                              title: Virtueller Audioraum
+                              type: boolean
+                              ui:widget: radio
+                          required:
+                            - virtualAudioRoom
+                  hardware:
+                    allOf:
+                      - if:
+                          properties:
+                            hardware:
+                              anyOf:
+                                - const: Neu
+                                - const: Vorhanden
+                        then:
+                          properties:
+                            hardwaretyp:
+                              title: Hardwaretyp
+                              type: string
+                              enum:
+                                - 'Notebook (DE)'
+                                - 'Notebook (EN)'
+                                - 'Ipad (Nur Shopmitarbeiter)'
+                          required:
+                            - hardwaretyp
             
                 dependencies:
                   mobile:
