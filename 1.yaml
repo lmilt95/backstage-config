@@ -223,7 +223,6 @@ spec:
                                       ui:widget: radio
                                   required:
                                     - virtualAudioRoom
-# # hardware
 #             - if:
 #                 properties:
 #                   typDesMA:
