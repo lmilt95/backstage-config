@@ -10,21 +10,21 @@ spec:
   parameters:
     - title: Project Issues Jira
       required:
-        # - issuetype
-        # - project
+        - issuetype
+        - project
         - typDesMA
       properties:
-        # project:
-        #   title: project
-        #   type: string
-        #   ui:autofocus: true
-        #   enum:
-        #     - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
-        # issuetype:
-        #   title: issuetype
-        #   type: string
-        #   enum:
-        #     - 'Stammdaten'
+        project:
+          title: project
+          type: string
+          ui:autofocus: true
+          enum:
+            - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
+        issuetype:
+          title: issuetype
+          type: string
+          enum:
+            - 'Stammdaten'
         typDesMA:
           title: Typ des MA 
           enum:
@@ -42,11 +42,11 @@ spec:
           type: object
           required: 
             - vorgang
-            # - firstName
-            # - lastName
-            # - costCenter
-            # - startOfWork
-            # - department
+            - firstName
+            - lastName
+            - costCenter
+            - startOfWork
+            - department
           properties: 
             vorgang:
               title: Vorgang
@@ -54,50 +54,50 @@ spec:
                 - 'Aufbau / Anlage / Einrichtung'
                 - 'Auderung'
                 - 'Abbau / Ruckbau / Loschen'
-            # firstName:
-            #   title: Vorname(Firstname)
-            #   type: string
-            # lastName:
-            #   title: Nachname(Lastname)
-            #   type: string
-            # email:
-            #   title: Email Address
-            #   type: string
-            # costCenter:
-            #   title: Kostenstelle(Cost center)
-            #   type: string
-            # startOfWork:
-            #   title: Arbeitsbeginn(Start of work)
-            #   type: string
-            #   format: date
-            # department:
-            #   title: Department(Abteilung)
-            #   type: string
-            #   enum:
-            #     - 'AQ/LS'
-            #     - 'BER M/BR-A'
+            firstName:
+              title: Vorname(Firstname)
+              type: string
+            lastName:
+              title: Nachname(Lastname)
+              type: string
+            email:
+              title: Email Address
+              type: string
+            costCenter:
+              title: Kostenstelle(Cost center)
+              type: string
+            startOfWork:
+              title: Arbeitsbeginn(Start of work)
+              type: string
+              format: date
+            department:
+              title: Department(Abteilung)
+              type: string
+              enum:
+                - 'AQ/LS'
+                - 'BER M/BR-A'
     
     - title: Extra User Info
       dependencies:
         typDesMA:
           allOf:
  # ----  uNumber
-            # - if:
-            #     properties:
-            #       typDesMA:
-            #         anyOf:
-            #           - const: Arbeitnehmeruberlassung
-            #           - const: LH-Group Mitarbeiter
-            #           - const: Mitarbeiter
-            #           - const: Praktikant
-            #           - const: Werkstudent
-            #   then:
-            #     properties:
-            #       uNumber:
-            #         title: uNumber
-            #         type: string
-            #     required:
-            #       - uNumber
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: LH-Group Mitarbeiter
+                      - const: Mitarbeiter
+                      - const: Praktikant
+                      - const: Werkstudent
+              then:
+                properties:
+                  uNumber:
+                    title: uNumber
+                    type: string
+                required:
+                  - uNumber
 
  # ----  endDate + vorgesetzter
             # - if:
@@ -256,11 +256,6 @@ spec:
                           required:
                             - hardwaretyp
               
-            
-
-
-
-
             - if:
                 properties:
                   typDesMA:
