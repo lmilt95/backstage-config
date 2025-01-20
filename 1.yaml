@@ -211,18 +211,15 @@ spec:
                                   const: true
                             then:
                               properties:
-                                userObject:
-                                  type: object
-                                  properties:
-                                    telefonnummer:
-                                      title: Telefonnummer
-                                      type: string
-                                    virtualAudioRoom:
-                                      title: Virtueller Audioraum
-                                      type: boolean
-                                      ui:widget: radio
-                                  required:
-                                    - virtualAudioRoom
+                                telefonnummer:
+                                  title: Telefonnummer
+                                  type: string
+                                virtualAudioRoom:
+                                  title: Virtueller Audioraum
+                                  type: boolean
+                                  ui:widget: radio
+                              required:
+                                - virtualAudioRoom
             - if:
                 properties:
                   typDesMA:
@@ -256,18 +253,15 @@ spec:
                                     - const: Vorhanden
                             then:
                               properties:
-                                userObject:
-                                  type: object
-                                  properties:
-                                    hardwaretyp:
-                                      title: Hardwaretyp
-                                      type: string
-                                      enum:
-                                        - 'Notebook (DE)'
-                                        - 'Notebook (EN)'
-                                        - 'Ipad (Nur Shopmitarbeiter)'
-                                  required:
-                                    - hardwaretyp
+                                hardwaretyp:
+                                  title: Hardwaretyp
+                                  type: string
+                                  enum:
+                                    - 'Notebook (DE)'
+                                    - 'Notebook (EN)'
+                                    - 'Ipad (Nur Shopmitarbeiter)'
+                              required:
+                                - hardwaretyp
             - if:
                 properties:
                   typDesMA:
