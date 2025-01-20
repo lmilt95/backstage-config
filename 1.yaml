@@ -183,14 +183,6 @@ spec:
                     title: Mobiltelefon
                     type: boolean
                     ui:widget: radio
-                  hardware:
-                    title: hardware
-                    type: string
-                    enum:
-                      - 'Neu'
-                      - 'Vorhanden'
-                      - 'Nicht erforderlich'
-            
                 dependencies:
                   mobile:
                     allOf:
@@ -209,6 +201,32 @@ spec:
                               ui:widget: radio
                           required:
                             - virtualAudioRoom
+                  hardware:
+                    title: hardware
+                    type: string
+                    enum:
+                      - 'Neu'
+                      - 'Vorhanden'
+                      - 'Nicht erforderlich'
+            
+                # dependencies:
+                #   mobile:
+                #     allOf:
+                #       - if:
+                #           properties:
+                #             mobile:
+                #               const: true
+                #         then:
+                #           properties:
+                #             telefonnummer:
+                #               title: Telefonnummer
+                #               type: string
+                #             virtualAudioRoom:
+                #               title: Virtueller Audioraum
+                #               type: boolean
+                #               ui:widget: radio
+                #           required:
+                #             - virtualAudioRoom
 
 
 
