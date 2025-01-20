@@ -97,6 +97,25 @@ spec:
                     type: string
                 required:
                   - uNumber
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: Mitarbeiter
+                      - const: Praktikant
+                      - const: Werkstudent
+              then:
+                properties:
+                  endDate:
+                    title: End date
+                    type: string
+                  vorgesetzter:
+                    title: Vorgesetzter
+                    type: string
+                required:
+                  - endDate
+                  - vorgesetzter
   steps:
     - id: fetchBase
       name: Fetch Base
