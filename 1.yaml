@@ -19,22 +19,9 @@ spec:
             - 'Mitarbeiter'
             - 'Praktikant'
             - 'Werkstudent'
-    - title: Standart User data 
-      properties:
-        userObject:
-          title: User Info
-          type: object
-          required: 
-            - vorgang
-          properties: 
-            vorgang:
-              title: Vorgang
-              enum:
-                - 'Aufbau / Anlage / Einrichtung'
-                - 'Auderung'
-                - 'Abbau / Ruckbau / Loschen'
+    
       dependencies:
-        ${{ parameters.typDesMA }}:
+        typDesMA:
           allOf:
             - if:
                 properties:
