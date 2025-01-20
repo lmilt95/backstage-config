@@ -79,7 +79,6 @@ spec:
       dependencies:
         typDesMA:
           allOf:
- # ----  uNumber
             - if:
                 properties:
                   typDesMA:
@@ -99,7 +98,6 @@ spec:
                         type: string
                     required:
                       - uNumber
-#  # ----  endDate + vorgesetzter
             - if:
                 properties:
                   typDesMA:
@@ -122,7 +120,6 @@ spec:
                     required:
                       - endDate
                       - vorgesetzter
-#  # ----  mmgVerantwortlicher
             - if:
                 properties:
                   typDesMA:
@@ -187,40 +184,45 @@ spec:
                       - buLhGroup
                       - compAddres
                       - telephone
-                      - emailAdd
-#       # mobile      
-#             - if:
-#                 properties:
-#                   typDesMA:
-#                     anyOf:
-#                       - const: Arbeitnehmeruberlassung
-#                       - const: Mitarbeiter
-#               then:
-#                 required:
-#                   - mobile
-#                 properties:
-#                   mobile:
-#                     title: Mobiltelefon
-#                     type: boolean
-#                     ui:widget: radio
-#                 dependencies:
-#                   mobile:
-#                     allOf:
-#                       - if:
-#                           properties:
-#                             mobile:
-#                               const: true
-#                         then:
-#                           properties:
-#                             telefonnummer:
-#                               title: Telefonnummer
-#                               type: string
-#                             virtualAudioRoom:
-#                               title: Virtueller Audioraum
-#                               type: boolean
-#                               ui:widget: radio
-#                           required:
-#                             - virtualAudioRoom
+                      - emailAdd     
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: Mitarbeiter
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      mobile:
+                        title: Mobiltelefon
+                        type: boolean
+                        ui:widget: radio
+                    required:
+                      - mobile
+                dependencies:
+                  mobile:
+                    allOf:
+                      - if:
+                          properties:
+                            mobile:
+                              const: true
+                        then:
+                          properties:
+                            userObject:
+                              type: object
+                              properties:
+                                telefonnummer:
+                                  title: Telefonnummer
+                                  type: string
+                                virtualAudioRoom:
+                                  title: Virtueller Audioraum
+                                  type: boolean
+                                  ui:widget: radio
+                              required:
+                                - virtualAudioRoom
 # # hardware
 #             - if:
 #                 properties:
