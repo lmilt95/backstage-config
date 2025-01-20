@@ -10,21 +10,21 @@ spec:
   parameters:
     - title: Project Issues Jira
       required:
-        - issuetype
-        - project
+        # - issuetype
+        # - project
         - typDesMA
       properties:
-        project:
-          title: project
-          type: string
-          ui:autofocus: true
-          enum:
-            - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
-        issuetype:
-          title: issuetype
-          type: string
-          enum:
-            - 'Stammdaten'
+        # project:
+        #   title: project
+        #   type: string
+        #   ui:autofocus: true
+        #   enum:
+        #     - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
+        # issuetype:
+        #   title: issuetype
+        #   type: string
+        #   enum:
+        #     - 'Stammdaten'
         typDesMA:
           title: Typ des MA 
           enum:
@@ -34,6 +34,8 @@ spec:
             - 'Mitarbeiter'
             - 'Praktikant'
             - 'Werkstudent'
+
+    - title: User Info
       dependencies:
         typDesMA:
           allOf:
