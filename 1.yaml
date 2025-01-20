@@ -156,15 +156,15 @@ spec:
                       - const: Dienstleister
               then:
                 required:
-                  # - externalFirm
+                  - externalFirm
                   # - buLhGroup
                   # - compAddres
                   # - telephone
                   # - emailAdd
                 properties:
-                  # externalFirm:
-                  #   title: Externe Firma
-                  #   type: string
+                  externalFirm:
+                    title: Externe Firma
+                    type: string
                   # buLhGroup:
                   #   title: BU der LH-Group?
                   #   type: boolean
