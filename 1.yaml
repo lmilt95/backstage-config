@@ -142,6 +142,48 @@ spec:
                   titel:
                     title: Titel
                     type: string
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+              then:
+                required:
+                  # - externalFirm
+                  - buLhGroup
+                  # - compAddres
+                  # - telephone
+                  # - emailAdd
+                  - mobile
+                  - hardware
+                properties:
+                  # externalFirm:
+                  #   title: Externe Firma
+                  #   type: string
+                  buLhGroup:
+                    title: BU der LH-Group?
+                    type: boolean
+                    ui:widget: radio
+                  # compAddres:
+                  #   title: Copany Adres/Firmenanschrift
+                  #   type: string
+                  # telephone:
+                  #   title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
+                  #   type: string
+                  # emailAdd:
+                  #   title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
+                  #   type: string
+                  mobile:
+                    title: Mobiltelefon
+                    type: boolean
+                    ui:widget: radio
+                  hardware:
+                    title: hardware
+                    type: string
+                    enum:
+                      - 'Neu'
+                      - 'Vorhanden'
+                      - 'Nicht erforderlich'
   steps:
     - id: fetchBase
       name: Fetch Base
