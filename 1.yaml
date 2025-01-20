@@ -93,184 +93,187 @@ spec:
                       - const: Werkstudent
               then:
                 properties:
-                  uNumber:
-                    title: uNumber
-                    type: string
+                  userObject:
+                    type: object
+                    properties: 
+                      uNumber:
+                        title: uNumber
+                        type: string
                 required:
                   - uNumber
- # ----  endDate + vorgesetzter
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Arbeitnehmeruberlassung
-                      - const: Mitarbeiter
-                      - const: Praktikant
-                      - const: Werkstudent
-              then:
-                properties:
-                  endDate:
-                    title: End date
-                    type: string
-                  vorgesetzter:
-                    title: Vorgesetzter
-                    type: string
-                required:
-                  - endDate
-                  - vorgesetzter
- # ----  mmgVerantwortlicher
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Dienstleister
-                      - const: LH-Group Mitarbeiter
-              then:
-                required:
-                  - mmgVerantwortlicher
-                properties:
-                  mmgVerantwortlicher:
-                    title: MMG-Verantwortlicher
-                    type: string
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Mitarbeiter
-                      - const: LH-Group Mitarbeiter
-              then:
-                required:
-                  - titel
-                properties:
-                  titel:
-                    title: Titel
-                    type: string
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Arbeitnehmeruberlassung
-                      - const: Dienstleister
-              then:
-                required:
-                  - externalFirm
-                  - buLhGroup
-                  - compAddres
-                  - telephone
-                  - emailAdd
-                properties:
-                  externalFirm:
-                    title: Externe Firma
-                    type: string
-                  buLhGroup:
-                    title: BU der LH-Group?
-                    type: boolean
-                    ui:widget: radio
-                  compAddres:
-                    title: Copany Adres/Firmenanschrift
-                    type: string
-                  telephone:
-                    title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
-                    type: string
-                  emailAdd:
-                    title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
-                    type: string
-      # mobile      
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Arbeitnehmeruberlassung
-                      - const: Mitarbeiter
-              then:
-                required:
-                  - mobile
-                properties:
-                  mobile:
-                    title: Mobiltelefon
-                    type: boolean
-                    ui:widget: radio
-                dependencies:
-                  mobile:
-                    allOf:
-                      - if:
-                          properties:
-                            mobile:
-                              const: true
-                        then:
-                          properties:
-                            telefonnummer:
-                              title: Telefonnummer
-                              type: string
-                            virtualAudioRoom:
-                              title: Virtueller Audioraum
-                              type: boolean
-                              ui:widget: radio
-                          required:
-                            - virtualAudioRoom
-# hardware
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: Arbeitnehmeruberlassung
-                      - const: Mitarbeiter
-                      - const: Praktikant
-                      - const: Werkstudent
-              then:
-                required:
-                  - hardware
-                properties:
-                  hardware:
-                    title: hardware
-                    type: string
-                    enum:
-                      - 'Neu'
-                      - 'Vorhanden'
-                      - 'Nicht erforderlich'
-                dependencies:
-                  hardware:
-                    allOf:
-                      - if:
-                          properties:
-                            hardware:
-                              anyOf:
-                                - const: Neu
-                                - const: Vorhanden
-                        then:
-                          properties:
-                            hardwaretyp:
-                              title: Hardwaretyp
-                              type: string
-                              enum:
-                                - 'Notebook (DE)'
-                                - 'Notebook (EN)'
-                                - 'Ipad (Nur Shopmitarbeiter)'
-                          required:
-                            - hardwaretyp
-            - if:
-                properties:
-                  typDesMA:
-                    anyOf:
-                      - const: LH-Group Mitarbeiter
-              then:
-                required:
-                  - buLhGroup
-                  - emailAdd
-                properties:
-                  externalFirm:
-                    title: Externe Firma
-                    type: string
-                  buLhGroup:
-                    title: BU der LH-Group?
-                    type: boolean
-                    ui:widget: radio
-                  telephone:
-                    title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
-                    type: string
-                  emailAdd:
-                    title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
-                    type: string
+#  # ----  endDate + vorgesetzter
+#             - if:
+#                 properties:
+#                   typDesMA:
+#                     anyOf:
+#                       - const: Arbeitnehmeruberlassung
+#                       - const: Mitarbeiter
+#                       - const: Praktikant
+#                       - const: Werkstudent
+#               then:
+#                 properties:
+#                   endDate:
+#                     title: End date
+#                     type: string
+#                   vorgesetzter:
+#                     title: Vorgesetzter
+#                     type: string
+#                 required:
+#                   - endDate
+#                   - vorgesetzter
+#  # ----  mmgVerantwortlicher
+#             - if:
+#                 properties:
+#                   typDesMA:
+#                     anyOf:
+#                       - const: Dienstleister
+#                       - const: LH-Group Mitarbeiter
+#               then:
+#                 required:
+#                   - mmgVerantwortlicher
+#                 properties:
+#                   mmgVerantwortlicher:
+#                     title: MMG-Verantwortlicher
+#                     type: string
+#             - if:
+#                 properties:
+#                   typDesMA:
+#                     anyOf:
+#                       - const: Mitarbeiter
+#                       - const: LH-Group Mitarbeiter
+#               then:
+#                 required:
+#                   - titel
+#                 properties:
+#                   titel:
+#                     title: Titel
+#                     type: string
+#             - if:
+#                 properties:
+#                   typDesMA:
+#                     anyOf:
+#                       - const: Arbeitnehmeruberlassung
+#                       - const: Dienstleister
+#               then:
+#                 required:
+#                   - externalFirm
+#                   - buLhGroup
+#                   - compAddres
+#                   - telephone
+#                   - emailAdd
+#                 properties:
+#                   externalFirm:
+#                     title: Externe Firma
+#                     type: string
+#                   buLhGroup:
+#                     title: BU der LH-Group?
+#                     type: boolean
+#                     ui:widget: radio
+#                   compAddres:
+#                     title: Copany Adres/Firmenanschrift
+#                     type: string
+#                   telephone:
+#                     title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
+#                     type: string
+#                   emailAdd:
+#                     title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
+#                     type: string
+#       # mobile      
+#             - if:
+#                 properties:
+#                   typDesMA:
+#                     anyOf:
+#                       - const: Arbeitnehmeruberlassung
+#                       - const: Mitarbeiter
+#               then:
+#                 required:
+#                   - mobile
+#                 properties:
+#                   mobile:
+#                     title: Mobiltelefon
+#                     type: boolean
+#                     ui:widget: radio
+#                 dependencies:
+#                   mobile:
+#                     allOf:
+#                       - if:
+#                           properties:
+#                             mobile:
+#                               const: true
+#                         then:
+#                           properties:
+#                             telefonnummer:
+#                               title: Telefonnummer
+#                               type: string
+#                             virtualAudioRoom:
+#                               title: Virtueller Audioraum
+#                               type: boolean
+#                               ui:widget: radio
+#                           required:
+#                             - virtualAudioRoom
+# # hardware
+#             - if:
+#                 properties:
+#                   typDesMA:
+#                     anyOf:
+#                       - const: Arbeitnehmeruberlassung
+#                       - const: Mitarbeiter
+#                       - const: Praktikant
+#                       - const: Werkstudent
+#               then:
+#                 required:
+#                   - hardware
+#                 properties:
+#                   hardware:
+#                     title: hardware
+#                     type: string
+#                     enum:
+#                       - 'Neu'
+#                       - 'Vorhanden'
+#                       - 'Nicht erforderlich'
+#                 dependencies:
+#                   hardware:
+#                     allOf:
+#                       - if:
+#                           properties:
+#                             hardware:
+#                               anyOf:
+#                                 - const: Neu
+#                                 - const: Vorhanden
+#                         then:
+#                           properties:
+#                             hardwaretyp:
+#                               title: Hardwaretyp
+#                               type: string
+#                               enum:
+#                                 - 'Notebook (DE)'
+#                                 - 'Notebook (EN)'
+#                                 - 'Ipad (Nur Shopmitarbeiter)'
+#                           required:
+#                             - hardwaretyp
+#             - if:
+#                 properties:
+#                   typDesMA:
+#                     anyOf:
+#                       - const: LH-Group Mitarbeiter
+#               then:
+#                 required:
+#                   - buLhGroup
+#                   - emailAdd
+#                 properties:
+#                   externalFirm:
+#                     title: Externe Firma
+#                     type: string
+#                   buLhGroup:
+#                     title: BU der LH-Group?
+#                     type: boolean
+#                     ui:widget: radio
+#                   telephone:
+#                     title: Telephone number (company/external employee)//Telefonnummer (Firma/Externer MA)
+#                     type: string
+#                   emailAdd:
+#                     title: Email address (company/external employee)//Email Adresse (Firma/Externer MA)
+#                     type: string
   steps:
     - id: fetchBase
       name: Fetch Base
