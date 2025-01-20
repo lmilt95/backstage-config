@@ -19,14 +19,13 @@ spec:
             - 'Mitarbeiter'
             - 'Praktikant'
             - 'Werkstudent'
-    
       dependencies:
         typDesMA:
           allOf:
             - if:
                 properties:
                   typDesMA:
-                    anyof:
+                    anyOf:
                       - const: Dienstleister
                       - const: Praktikant
               then:
