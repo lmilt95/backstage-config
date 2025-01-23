@@ -18,10 +18,10 @@ spec:
           title: testi
           type: string
           description: User of the component
-          ui:field: EntityPicker
-          ui:options:
-            catalogFilter:
-              kind: User
+          ui:field: ValidateKebabCase
+          # ui:options:
+          #   catalogFilter:
+          #     kind: User
         # project:
         #   title: Please select project
         #   type: string
