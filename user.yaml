@@ -1,9 +1,12 @@
-apiVersion: backstage.io/v1alpha1
+apiVersion: backstage.io/v1beta1
 kind: User
 metadata:
-  name: jdoe
+  namespace: default
+  name: U714208
+  description: Sebastian Fecher
+
 spec:
   profile:
-    displayName: Jenny Doe
-    email: jenny-doe@example.com
+    displayName: Sebastian Fecher
+    email: Sebastian.Fecher@milesandmore.com
   memberOf: []
