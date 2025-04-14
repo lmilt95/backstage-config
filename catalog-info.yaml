@@ -14,5 +14,5 @@ metadata:
     # jira/component: 'lino'
 spec:
   type: library
-  owner: CNCF
+  owner: u123456
   lifecycle: production
