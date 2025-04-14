@@ -2,11 +2,11 @@ apiVersion: backstage.io/v1beta1
 kind: User
 metadata:
   namespace: default
-  name: U714208
-  description: Sebastian Fecher
+  name: u123456
+  description: sdgs sdg d
 
 spec:
   profile:
-    displayName: Sebastian Fecher
-    email: Sebastian.Fecher@milesandmore.com
+    displayName: sdgdf sgsdfg d
+    email: dfggdffdgr@dfgdfgfdg.com
   memberOf: []
