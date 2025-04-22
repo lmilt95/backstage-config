@@ -14,5 +14,5 @@ metadata:
     # jira/component: 'lino'
 spec:
   type: library
-  owner: user:u123456
+  owner: guest
   lifecycle: production
