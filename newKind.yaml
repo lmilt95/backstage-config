@@ -1,8 +1,9 @@
 apiVersion: backstage.io/v1alpha1
-kind: TeamSpace
+kind: System
 metadata:
-  name: alpha-space
-  description: An internal custom team workspace
+  name: artist-engagement-portal
+  type: jira
+  description: Handy tools to keep artists in the loop
 spec:
-  owner: team-alpha
-  environment: dev
+  owner: artist-relations-team
+  domain: artists
