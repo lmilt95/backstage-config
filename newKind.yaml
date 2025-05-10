@@ -4,6 +4,7 @@ metadata:
   name: artist-engagement-portal
   tags: 
     - jira
+    - dev
   type: jira
   description: Handy tools to keep artists in the loop
 spec:
