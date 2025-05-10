@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: artist-engagement-portal
+  tags: jira
   type: jira
   description: Handy tools to keep artists in the loop
 spec:
