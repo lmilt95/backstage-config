@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: TeamSpace
+metadata:
+  name: alpha-space
+  description: An internal custom team workspace
+spec:
+  owner: team-alpha
+  environment: dev
