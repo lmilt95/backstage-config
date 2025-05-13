@@ -1,0 +1,266 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: jira
+  title: Create Issue in Jira
+  description: jira
+spec:
+  owner: user:guest
+  type: user
+  parameters:
+    - title: Project information for issue create in Jira
+      required:
+        - issuetype
+        - project
+        - typDesMA
+      properties:
+        project:
+          title: Please select project
+          type: string
+          ui:autofocus: true
+          enum:
+            - 'MURV'
+          enumNames:
+            - 'MMG Mitarbeiter- und Rechteverwaltung (MURV)'
+        issuetype:
+          title: Please selecte issue type
+          type: string
+          enum:
+            - '10703'
+          enumNames:
+            - 'Master Data'
+        typDesMA:
+          title: Typ des MA 
+          enum:
+            - 'Arbeitnehmeruberlassung'
+            - 'Dienstleister'
+            - 'LH-Group Mitarbeiter'
+    - title: General User information
+      properties:
+        userObject:
+          title: User Information
+          type: object
+          required: 
+            - vorgang
+            - firstName
+            - lastName
+            - costCenter
+            - startOfWork
+            - department
+            - buLhGroup
+          properties: 
+            vorgang:
+              title: Vorgang
+              enum:
+                - 'Aufbau / Anlage / Einrichtung'
+                - 'Auderung'
+                - 'Abbau / Ruckbau / Loschen'
+            firstName:
+              title: Vorname(Firstname)
+              type: string
+            lastName:
+              title: Nachname(Lastname)
+              type: string
+            email:
+              title: Email Address
+              type: string
+              pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            costCenter:
+              title: Kostenstelle(Cost center)
+              type: string
+            startOfWork:
+              title: Arbeitsbeginn(Start of work)
+              type: string
+              format: date
+            department:
+              title: Department(Abteilung)
+              type: string
+              enum:
+                - 'AQ/LS'
+            buLhGroup:
+              title: BU der LH-Group?
+              type: string
+              enum:
+                - 'Ja'
+                - 'Nein'
+    - title: Addition User Information
+      dependencies:
+        typDesMA:
+          allOf:
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: LH-Group Mitarbeiter
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties: 
+                      uNumber:
+                        title: U-Number
+                        type: string
+                        pattern: '^U\d{6}$'
+                    required:
+                      - uNumber
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Dienstleister
+                      - const: LH-Group Mitarbeiter
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      mmgVerantwortlicher:
+                        title: MMG-Verantwortlicher
+                        type: string
+                        ui:field: UserInfo
+                    required:
+                      - mmgVerantwortlicher
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+                      - const: Dienstleister
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      externalFirm:
+                        title: Externe Firma
+                        type: string
+                      compAddres:
+                        title: Company Address(Firmenanschrift)
+                        type: string
+                      telephone:
+                        title: Telephone number (Company/External employee) / Telefonnummer (Firma/Externer MA)
+                        type: string
+                      emailAdd:
+                        title: Email address (Company/External employee) / Email Adresse (Firma/Externer MA)
+                        type: string
+                        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                    required:
+                      - externalFirm
+                      - compAddres
+                      - telephone
+                      - emailAdd     
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: Arbeitnehmeruberlassung
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      endDate:
+                        title: End date
+                        type: string
+                        format: date
+                      vorgesetzter:
+                        title: Vorgesetzter
+                        type: string
+                        ui:field: UserInfo
+                      hardware:
+                        title: Hardware
+                        type: string
+                        enum:
+                          - 'Neu'
+                          - 'Vorhanden'
+                          - 'Nicht erforderlich'
+                      mobile:
+                        title: Mobile phone
+                        type: string
+                        enum:
+                          - 'Ja'
+                          - 'Nein'
+                    required:
+                      - mobile
+                      - endDate
+                      - vorgesetzter
+                      - hardware
+                    dependencies:
+                      mobile:
+                        allOf:
+                          - if:
+                              properties:
+                                mobile:
+                                  const: Ja
+                            then:
+                              properties:
+                                telefonnummer:
+                                  title: Phone number / Telefonnummer (Mobil) 
+                                  type: string
+                                virtualAudioRoom:
+                                  title: Virtual Audio Room(Virtueller Audioraum)
+                                  type: string
+                                  enum:
+                                    - 'Ja'
+                                    - 'Nein'
+                              required:
+                                - virtualAudioRoom
+                      hardware:
+                        allOf:
+                          - if:
+                              properties:
+                                hardware:
+                                  anyOf:
+                                    - const: Neu
+                                    - const: Vorhanden
+                            then:
+                              properties:
+                                hardwaretyp:
+                                  title: Hardware type
+                                  type: string
+                                  enum:
+                                    - 'Notebook (DE)'
+                                    - 'Notebook (EN)'
+                                    - 'Ipad (Nur Shopmitarbeiter)'
+                              required:
+                                - hardwaretyp
+            - if:
+                properties:
+                  typDesMA:
+                    anyOf:
+                      - const: LH-Group Mitarbeiter
+              then:
+                properties:
+                  userObject:
+                    type: object
+                    properties:
+                      externalFirm:
+                        title: Externe Firma
+                        type: string
+                      telephone:
+                        title: Telephone number (Company/External employee) / Telefonnummer (Firma/Externer MA)
+                        type: string
+                      emailAdd:
+                        title: Email address (Company/External employee) / Email Adresse (Firma/Externer MA)
+                        type: string
+                        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                      titel:
+                        title: Titel
+                        type: string
+                    required:
+                      - titel
+                      - emailAdd
+  steps:
+    - id: jira
+      name: jira pub
+      action: jira:issue:create
+      input:
+        project: ${{ parameters.project }}
+        issuetype: ${{ parameters.issuetype }}
+        typDesMA: ${{ parameters.typDesMA }}
+        userObject: ${{ parameters.userObject }}
+  output:
+    links:
+      - title: Jira Link
+        url: ${{ steps['jira'].output.remoteUrl }}
